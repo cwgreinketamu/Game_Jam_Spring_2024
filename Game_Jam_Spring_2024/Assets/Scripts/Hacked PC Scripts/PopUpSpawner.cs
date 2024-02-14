@@ -8,19 +8,20 @@ public class PopUpSpawner : MonoBehaviour
     [SerializeField] private GameObject[] windowPrefabs;
     [SerializeField] private int maxWindowsToSpawn = 10; // Maximum number of enemies to spawn
     private int windowsSpawned = 0; // Counter for enemies spawned
-    private bool canSpawn = true;
+    private int windowsRemaining; // Counter for remaining windows
 
     private void Start()
     {
         StartCoroutine(Spawner());
         maxWindowsToSpawn = Random.Range(10, 16);
+        windowsRemaining = maxWindowsToSpawn; // Set the remaining windows to the maximum initially
     }
 
     private IEnumerator Spawner()
     {
         WaitForSeconds wait = new WaitForSeconds(spawnRate);
 
-        while (canSpawn && windowsSpawned < maxWindowsToSpawn) // Check if still allowed to spawn and not reached max
+        while (windowsSpawned < maxWindowsToSpawn) // Check if still allowed to spawn and not reached max
         {
             yield return wait;
 
@@ -33,6 +34,17 @@ public class PopUpSpawner : MonoBehaviour
             Instantiate(windowToSpawn, randomSpawnPosition, Quaternion.identity);
 
             windowsSpawned++; // Increment the counter
+        }
+    }
+
+    // Method to decrease the remaining windows count
+    public void DecreaseWindowsCount()
+    {
+        windowsRemaining--;
+        if (windowsRemaining <= 0)
+        {
+            // All ads have been destroyed, perform necessary actions here
+            Debug.Log("All ads destroyed!");
         }
     }
 }
