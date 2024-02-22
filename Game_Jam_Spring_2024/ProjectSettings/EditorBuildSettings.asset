@@ -5,7 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: a29def22dc2774444a7892dc384518f0
+  - enabled: 1
+    path: Assets/Scenes/Hacked PC.unity
+    guid: e324ef11167958e4da1271c8ef396681
+  - enabled: 1
+    path: Assets/Scenes/Bug Fixing.unity
+    guid: aba4d6b48b0c259458f88dd7523d2fb0
+  - enabled: 1
+    path: Assets/Scenes/Coffee Catcher.unity
+    guid: 0329717dc05e0e643b94abe1c7050409
+  - enabled: 1
+    path: Assets/Scenes/Sound Mixing.unity
+    guid: 83c0a320ac700bc4ea07bb1cde9e30e8
   m_configObjects: {}

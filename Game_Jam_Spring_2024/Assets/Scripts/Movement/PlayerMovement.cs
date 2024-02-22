@@ -12,9 +12,12 @@ public class PlayerMovement : MonoBehaviour
 
     public float runSpeed = 20.0f;
 
+    public GameManagerScript gameManager;
+
     void Start ()
     {
         body = GetComponent<Rigidbody2D>(); 
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
     }
 
     void Update ()
@@ -25,14 +28,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {  
-        //the below if statement is unnecessary if the player is using a controller as controllers already account for diagonal movement. 
-        if(horizontal != 0 && vertical != 0)
+        if (!gameManager.miniSceneActive)
         {
-            horizontal *= moveLimit;
-            vertical *= moveLimit;
-        }
+            //the below if statement is unnecessary if the player is using a controller as controllers already account for diagonal movement. 
+            if (horizontal != 0 && vertical != 0)
+            {
+                horizontal *= moveLimit;
+                vertical *= moveLimit;
+            }
 
-        body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+            body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+        }
     }
 
 

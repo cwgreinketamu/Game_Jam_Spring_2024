@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6715594352926684605}
   - component: {fileID: 8112819837130878916}
   - component: {fileID: 5745866551248454392}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CoffeeDrop
   m_TagString: CoffeeDroplet
   m_Icon: {fileID: 0}
