@@ -5,34 +5,25 @@ using TMPro;
 
 public class NPC : MonoBehaviour
 {
-    public GameObject dialoguePanel;
-    public TextMeshProUGUI dialogueText;
-    public string[] dialogue;
+    [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private string[] dialogue;
     private int index;
 
-    public GameObject contButton;
-    public float wordSpeed = 0.001f;
-    public bool playerIsClose;
+    [SerializeField] private GameObject contButton;
+    [SerializeField] private float wordSpeed = 0.001f;
+    private bool playerIsClose;
     private bool isTyping; // Flag to track if dialogue is currently typing
+    private bool dialogueActive; // Flag to track if dialogue is active
 
     // Reference to the player movement script
-    public PlayerMovement playerMovementScript;
+    [SerializeField] private PlayerMovement playerMovementScript;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerIsClose && !isTyping)
+        if (Input.GetKeyDown(KeyCode.E) && playerIsClose && !isTyping && !dialogueActive)
         {
-            if (dialoguePanel.activeInHierarchy)
-            {
-                zeroText();
-            }
-            else
-            {
-                dialoguePanel.SetActive(true);
-                StartCoroutine(Typing());
-                // Disable player movement when dialogue starts
-                playerMovementScript.enabled = false;
-            }
+            StartDialogue();
         }
 
         if (dialogueText.text == dialogue[index])
@@ -41,12 +32,25 @@ public class NPC : MonoBehaviour
         }
     }
 
-    public void zeroText()
+    void StartDialogue()
+    {
+        dialoguePanel.SetActive(true);
+        dialogueActive = true;
+        // Disable player movement when dialogue starts
+        playerMovementScript.enabled = false;
+        // Stop player movement
+        Rigidbody2D playerRigidbody = playerMovementScript.GetComponent<Rigidbody2D>();
+        playerRigidbody.velocity = Vector2.zero;
+        StartCoroutine(Typing());
+    }
+
+    public void ZeroText()
     {
         dialogueText.text = "";
         index = 0;
         dialoguePanel.SetActive(false);
         isTyping = false; // Reset typing flag
+        dialogueActive = false; // Reset dialogue active flag
         // Re-enable player movement when dialogue ends
         playerMovementScript.enabled = true;
     }
@@ -76,7 +80,7 @@ public class NPC : MonoBehaviour
         }
         else
         {
-            zeroText();
+            ZeroText();
         }
     }
 
@@ -85,7 +89,14 @@ public class NPC : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsClose = true;
-            zeroText();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerIsClose = false;
         }
     }
 }
