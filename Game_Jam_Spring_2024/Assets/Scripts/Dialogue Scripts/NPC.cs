@@ -11,7 +11,7 @@ public class NPC : MonoBehaviour
     private int index;
 
     [SerializeField] private GameObject contButton;
-    [SerializeField] private float wordSpeed = 0.001f;
+    [SerializeField] private float wordSpeed = 0.0001f;
     private bool playerIsClose;
     private bool isTyping; // Flag to track if dialogue is currently typing
     private bool dialogueActive; // Flag to track if dialogue is active
