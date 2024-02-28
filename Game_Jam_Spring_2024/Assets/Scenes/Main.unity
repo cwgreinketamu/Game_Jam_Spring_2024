@@ -2734,6 +2734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 10
+  gameManager: {fileID: 0}
 --- !u!50 &2034669332
 Rigidbody2D:
   serializedVersion: 4

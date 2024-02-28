@@ -17,6 +17,15 @@ public class soundwaveScript : MonoBehaviour
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        if (Random.Range(0,2) == 0)
+        {
+            frequency = Random.Range(0.05f, 0.10f);
+        }
+        else
+        {
+            frequency = Random.Range(0.14f, 0.20f);
+        }
+        
     }
 
     // Update is called once per frame

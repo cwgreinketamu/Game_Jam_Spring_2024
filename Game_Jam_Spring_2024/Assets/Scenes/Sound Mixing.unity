@@ -161,6 +161,10 @@ MonoBehaviour:
   xStart: -10
   lengthConstant: 3
   slider: {fileID: 695116104}
+  interval1: 0.01
+  interval2: 0.05
+  interval3: 0.1
+  duration: 3
 --- !u!120 &672923222
 LineRenderer:
   serializedVersion: 2
@@ -214,7 +218,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.25625038
+        value: 0.24375343
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -264,7 +268,7 @@ LineRenderer:
   m_MaskInteraction: 0
   m_UseWorldSpace: 1
   m_Loop: 0
-  m_ApplyActiveColorSpace: 1
+  m_ApplyActiveColorSpace: 0
 --- !u!4 &672923223
 Transform:
   m_ObjectHideFlags: 0
@@ -362,7 +366,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3.66, z: 0}
-  m_LocalScale: {x: 1.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 3, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -604,7 +608,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 28638862ea1084726a3511cd325fc53d, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -630,13 +634,13 @@ LineRenderer:
   - {x: 1, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.9797224
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.17500162
+        value: 0.24999857
         inSlope: 0
         outSlope: 0
         tangentMode: 0

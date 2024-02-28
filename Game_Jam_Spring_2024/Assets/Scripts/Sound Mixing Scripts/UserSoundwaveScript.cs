@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class usersoundwaveScript : MonoBehaviour
@@ -14,11 +15,24 @@ public class usersoundwaveScript : MonoBehaviour
     public GameObject slider;
     private float minX;
     private float maxX;
+    private soundwaveScript goalScript;
+    public float interval1 = 0.01f;
+    public float interval2 = 0.05f;
+    public float interval3 = 0.10f;
+    public float duration = 1;
+    private float timer;
+    private GameManagerScript gameManager;
+    private int taskId = 4;
 
     // Start is called before the first frame update
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        goalScript = GameObject.Find("GoalSoundwave").GetComponent<soundwaveScript>();
+        if (GameObject.Find("GameManager") != null)
+        {
+            gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
+        }
         minX = slider.GetComponent<SliderScript>().minX;
         maxX = slider.GetComponent<SliderScript>().maxX;
     }
@@ -28,6 +42,34 @@ public class usersoundwaveScript : MonoBehaviour
     {
         frequency = 0.01f + (slider.transform.position.x - minX) / (maxX - minX) * (0.20f - 0.01f);
         Draw();
+        if (goalScript.frequency - interval1 < frequency && goalScript.frequency + interval1 > frequency)
+        {
+            lineRenderer.material.SetColor("_Color", new Color(0, 255, 0, 255));
+            if (timer == -1)
+            {
+                timer = Time.time;
+            }
+            else if (Time.time - timer > 1)
+            {
+                //Debug.Log("Sound Matched!");
+                if (GameObject.Find("GameManager") != null)
+                {
+                    gameManager.EndTask(taskId);
+                }
+            }
+        }
+        else
+        {
+            timer = -1;
+            if (goalScript.frequency - interval2 < frequency && goalScript.frequency + interval2 > frequency)
+            {
+                lineRenderer.material.SetColor("_Color", new Color(255, 255, 0, 255));
+            }
+            else 
+            {
+                lineRenderer.material.SetColor("_Color", new Color(255, 0, 0, 255));
+            }
+        }
     }
 
     void Draw()
