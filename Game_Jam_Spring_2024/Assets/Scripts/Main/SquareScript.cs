@@ -12,7 +12,7 @@ public class SquareScript : MonoBehaviour
     void Start()
     {
         coll = GetComponent<BoxCollider2D>();
-        coll.enabled = false;
+        coll.enabled = true;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
     }
 

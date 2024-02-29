@@ -9,12 +9,18 @@ public class PopUpSpawner : MonoBehaviour
     [SerializeField] private int maxWindowsToSpawn = 10; // Maximum number of enemies to spawn
     private int windowsSpawned = 0; // Counter for enemies spawned
     private int windowsRemaining; // Counter for remaining windows
+    private GameManagerScript gameManager;
+    private int taskId = 1;
 
     private void Start()
     {
         StartCoroutine(Spawner());
         maxWindowsToSpawn = Random.Range(10, 16);
         windowsRemaining = maxWindowsToSpawn; // Set the remaining windows to the maximum initially
+        if (GameObject.Find("GameManager") != null)
+        {
+            gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
+        }
     }
 
     private IEnumerator Spawner()
@@ -45,6 +51,10 @@ public class PopUpSpawner : MonoBehaviour
         {
             // All ads have been destroyed, perform necessary actions here
             Debug.Log("All ads destroyed!");
+            if (GameObject.Find("GameManager") != null)
+            {
+                gameManager.EndTask(taskId);
+            }
         }
     }
 }
