@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sound Mixing.unity
     guid: 83c0a320ac700bc4ea07bb1cde9e30e8
+  - enabled: 1
+    path: Assets/Scenes/Drawing Game.unity
+    guid: 32e7bb9f5e4cfd343ad3cbb455693f99
   m_configObjects: {}

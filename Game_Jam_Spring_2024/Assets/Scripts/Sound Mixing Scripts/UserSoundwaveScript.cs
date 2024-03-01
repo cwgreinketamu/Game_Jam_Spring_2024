@@ -54,7 +54,7 @@ public class usersoundwaveScript : MonoBehaviour
                 //Debug.Log("Sound Matched!");
                 if (GameObject.Find("GameManager") != null)
                 {
-                    gameManager.EndTask(taskId);
+                    Invoke("End", 1);
                 }
             }
         }
@@ -85,5 +85,10 @@ public class usersoundwaveScript : MonoBehaviour
             float y = amplitude * Mathf.Sin((Tau * frequency * x) + (timeConstant * Time.timeSinceLevelLoad));
             lineRenderer.SetPosition(currentPoint, new Vector3(x, y, 0));
         }
+    }
+
+    private void End()
+    {
+        gameManager.EndTask(taskId);
     }
 }

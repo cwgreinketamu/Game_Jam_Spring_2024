@@ -53,8 +53,13 @@ public class PopUpSpawner : MonoBehaviour
             Debug.Log("All ads destroyed!");
             if (GameObject.Find("GameManager") != null)
             {
-                gameManager.EndTask(taskId);
+                Invoke("End", 1);
             }
         }
+    }
+
+    private void End()
+    {
+        gameManager.EndTask(taskId);
     }
 }
