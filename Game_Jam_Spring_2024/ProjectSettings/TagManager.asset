@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CoffeeDroplet
   - Prompter
+  - Mouse
   layers:
   - Default
   - TransparentFX
