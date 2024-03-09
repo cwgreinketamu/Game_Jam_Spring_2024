@@ -12,12 +12,15 @@ public class GameManagerScript : MonoBehaviour
     private GameObject[] prompters;
     private int tasksCompleted = 0;
     public bool miniSceneActive;
+
+    public ProgressBar progressBar;
     // Start is called before the first frame update
     void Start()
     {
         miniSceneActive = false;
         prompters = GameObject.FindGameObjectsWithTag("Prompter");
         ActivateTask(unusedTasks[Random.Range(0, 4)]); //replace 4 with unusedTasks.Count
+        progressBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
     }
 
     // Update is called once per frame
@@ -74,6 +77,7 @@ public class GameManagerScript : MonoBehaviour
                     Debug.Log("Scene " + taskId + " unloaded");
                     miniSceneActive = false;
                     //task succeeded, add to progress bar here
+                    progressBar.IncreaseBar(0.1f); //the argument passed in is the percentage of the progress bar to increase by
                     ++tasksCompleted;
                     ActivateTask(unusedTasks[Random.Range(0, 4-tasksCompleted)]); //replace 5 with unusedTasks.Count
                     break;
@@ -96,6 +100,7 @@ public class GameManagerScript : MonoBehaviour
                 unusedTasks.RemoveAt(i);
                 Debug.Log("Task " + taskId + " failed");
                 //task failed, subtract from progress bar here
+                progressBar.DecreaseBar(0.1f); //The argument passed in is the percentage of the progress bar to reduce
                 ++tasksCompleted;
                 ActivateTask(unusedTasks[Random.Range(0, 4-tasksCompleted)]); //replace 4 with unusedTasks.Count
                 break;
