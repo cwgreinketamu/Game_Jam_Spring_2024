@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TaskPrompterScript : MonoBehaviour
 {
-    private BoxCollider2D coll;
+    private static BoxCollider2D coll;
     public GameManagerScript gameManager;
     public int taskId = -1;
     private float timer;
