@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - CoffeeDroplet
+  - Prompter
+  - Mouse
+  - EODText
   layers:
   - Default
   - TransparentFX
