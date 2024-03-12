@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 public class SliderScript : MonoBehaviour
 {
+    public Camera cam;
     public float minX = -10;
     public float maxX = 10;
     // Start is called before the first frame update
@@ -21,7 +22,7 @@ public class SliderScript : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3(mousePosition.x, transform.position.y, 0);
         if (transform.position.x > maxX)
         {

@@ -11,7 +11,8 @@ public class GameManagerScript : MonoBehaviour
     private List<int> inProgressTasks = new List<int>();
     private List<int> finishedTasks = new List<int>();
     private GameObject[] prompters;
-    private static int tasksCompleted = 0;
+    private int tasksCompleted = 0; //used to generate tasks on each individual day
+    private static int totalTasksCompleted = 0; //used to track progress bar between days
     private float timer = 0.0f;
 
     public float dayLength = 60.0f;
@@ -26,7 +27,7 @@ public class GameManagerScript : MonoBehaviour
         prompters = GameObject.FindGameObjectsWithTag("Prompter");
         ActivateTask(unusedTasks[Random.Range(0, 4)]); //replace 4 with unusedTasks.Count
         progressBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
-        progressBar.IncreaseBar(0.1f * tasksCompleted); 
+        progressBar.IncreaseBar(0.1f * totalTasksCompleted); 
     }
 
     // Update is called once per frame
@@ -78,10 +79,18 @@ public class GameManagerScript : MonoBehaviour
     {
         if (miniSceneActive)
         {
+            
             for (int i = 0; i < inProgressTasks.Count; i++)
             {
                 if (inProgressTasks[i] == taskId)
                 {
+                    for (int j = 0; j < prompters.Length; ++j)
+                    {
+                        if (prompters[j].GetComponent<TaskPrompterScript>().GetTaskID() == taskId)
+                        {
+                            prompters[j].GetComponent<TaskPrompterScript>().DisableArrow();
+                        }
+                    }
                     finishedTasks.Add(taskId);
                     inProgressTasks.RemoveAt(i);
                     SceneManager.UnloadSceneAsync(taskId);
@@ -90,6 +99,7 @@ public class GameManagerScript : MonoBehaviour
                     //task succeeded, add to progress bar here
                     progressBar.IncreaseBar(0.1f); //the argument passed in is the percentage of the progress bar to increase by
                     ++tasksCompleted;
+                    ++totalTasksCompleted;
                     ActivateTask(unusedTasks[Random.Range(0, 4-tasksCompleted)]); //replace 5 with unusedTasks.Count
                     break;
                 }
@@ -113,6 +123,7 @@ public class GameManagerScript : MonoBehaviour
                 //task failed, subtract from progress bar here
                 progressBar.DecreaseBar(0.1f); //The argument passed in is the percentage of the progress bar to reduce
                 ++tasksCompleted;
+                ++totalTasksCompleted;
                 ActivateTask(unusedTasks[Random.Range(0, 4-tasksCompleted)]); //replace 4 with unusedTasks.Count
                 break;
             }

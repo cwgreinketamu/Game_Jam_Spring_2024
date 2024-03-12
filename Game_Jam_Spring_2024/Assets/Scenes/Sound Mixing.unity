@@ -383,6 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14ca3016c46841e4b9920e8ad1b56d2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 1000497243}
   minX: -6
   maxX: 6
 --- !u!50 &695116108
