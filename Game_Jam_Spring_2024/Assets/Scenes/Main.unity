@@ -2616,8 +2616,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01c166b999989d468e0b28588a63df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dayLength: 60
   miniSceneActive: 0
-  progressBar: {fileID: 0}
 --- !u!4 &1268770017
 Transform:
   m_ObjectHideFlags: 0
