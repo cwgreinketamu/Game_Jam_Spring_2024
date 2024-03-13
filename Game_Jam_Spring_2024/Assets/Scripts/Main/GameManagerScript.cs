@@ -13,16 +13,19 @@ public class GameManagerScript : MonoBehaviour
     private GameObject[] prompters;
     private int tasksCompleted = 0; //used to generate tasks on each individual day
     private static int totalTasksCompleted = 0; //used to track progress bar between days
-    private float timer = 0.0f;
+    private float timer;
 
     public float dayLength = 60.0f;
 
     public bool miniSceneActive;
 
     public static ProgressBar progressBar;
+
+    public TMPro.TMP_Text timerText;
     // Start is called before the first frame update
     void Start()
     {
+        timer = dayLength;
         miniSceneActive = false;
         prompters = GameObject.FindGameObjectsWithTag("Prompter");
         ActivateTask(unusedTasks[Random.Range(0, 4)]); //replace 4 with unusedTasks.Count
@@ -33,11 +36,12 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > dayLength)
+        timer -= Time.deltaTime;
+        updateTimer(timer);
+        if (timer < 0)
         {
             EndDay();
-            timer = 0.0f;
+            timer = dayLength;
         }
     }
 
@@ -133,5 +137,14 @@ public class GameManagerScript : MonoBehaviour
     public void EndDay()
     {
          SceneManager.LoadScene("EndOfDay", LoadSceneMode.Single);
+    }
+
+    public void updateTimer(float currentTime)
+    {
+        currentTime += 1;
+        float minutes = Mathf.FloorToInt(currentTime / 60);
+        float seconds = Mathf.FloorToInt(currentTime % 60);
+
+        timerText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
     }
 }

@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main.unity
-    guid: a29def22dc2774444a7892dc384518f0
+    path: Assets/Scenes/StartScreen.unity
+    guid: de55d8a3d80d84c4a9aa6c3f757393b9
   - enabled: 1
     path: Assets/Scenes/Hacked PC.unity
     guid: e324ef11167958e4da1271c8ef396681
@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndOfDay.unity
     guid: 3722995920796e848aa61e24717db715
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: a29def22dc2774444a7892dc384518f0
   m_configObjects: {}
