@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 972f8fe5699628548b7666ef04f2fb72
+guid: 648969aa57b7c7540833b6f7f380c68c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LarryWorkAgain_0
+      name: LarryWorkAgain64x64_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 9
+        y: 0
         width: 64
-        height: 55
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0f96bf362fc09f4986995053d4c5e7c
-      internalID: -620673089
+      spriteID: fa05354a1e7c5f5409ed1aa83a3a0fd5
+      internalID: -2126937823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LarryWorkAgain_1
+      name: LarryWorkAgain64x64_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 9
+        y: 0
         width: 64
-        height: 55
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2f6dd942e194b844b83bcae31907cb4
-      internalID: -1778258314
+      spriteID: c181d4361d7dded46a37cefc5bfc14f4
+      internalID: -671885946
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LarryWorkAgain_2
+      name: LarryWorkAgain64x64_2
       rect:
         serializedVersion: 2
         x: 128
-        y: 9
+        y: 0
         width: 64
-        height: 55
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48a2faa5d341cf64290681d78f87ba5f
-      internalID: -1303286589
+      spriteID: bf039ae46e08b544caaf88ac1f82a4c9
+      internalID: 389977700
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LarryWorkAgain_3
+      name: LarryWorkAgain64x64_3
       rect:
         serializedVersion: 2
         x: 192
-        y: 9
+        y: 0
         width: 64
-        height: 55
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51089e718da4e114cba75fa4c89927f4
-      internalID: 1689776377
+      spriteID: f110beb71cf652844a3a524d7c700de0
+      internalID: 1261434481
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LarryWorkAgain_4
+      name: LarryWorkAgain64x64_4
       rect:
         serializedVersion: 2
         x: 256
-        y: 9
+        y: 0
         width: 64
-        height: 55
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00e4fd343df593247980b68ec3741fdf
-      internalID: -318473444
+      spriteID: e4c4e146dacb2f84cb85a4d550fcb60b
+      internalID: -969741630
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LarryWorkAgain_5
+      name: LarryWorkAgain64x64_5
       rect:
         serializedVersion: 2
         x: 320
-        y: 9
+        y: 0
         width: 64
-        height: 55
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e27eb717c888b9419b881ebd61a517c
-      internalID: -1728941625
+      spriteID: bbf13be8efe3a374399418a069865dcf
+      internalID: -370927600
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LarryWorkAgain_6
+      name: LarryWorkAgain64x64_6
       rect:
         serializedVersion: 2
         x: 384
-        y: 9
+        y: 0
         width: 64
-        height: 55
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +263,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6339ee7a266655242b142ba23b0eb5aa
-      internalID: 114189749
+      spriteID: 662aa90a747847644af7ecc2db2690b4
+      internalID: 2015220608
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LarryWorkAgain_7
+      name: LarryWorkAgain64x64_7
       rect:
         serializedVersion: 2
         x: 448
-        y: 9
+        y: 0
         width: 64
-        height: 55
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,20 +284,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 984154fa89bd4de40a45b7b8e96753f8
-      internalID: -654905589
+      spriteID: fe12cbe11822c8049953566acbeea221
+      internalID: -270229253
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LarryWorkAgain_8
+      name: LarryWorkAgain64x64_8
       rect:
         serializedVersion: 2
         x: 512
-        y: 9
+        y: 0
         width: 64
-        height: 55
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,20 +305,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 862a20c0da51f904f80dcc55035fee17
-      internalID: -1481902106
+      spriteID: cfc0e0928a6c3aa4489b801c5b95ae97
+      internalID: -1703533339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LarryWorkAgain_9
+      name: LarryWorkAgain64x64_9
       rect:
         serializedVersion: 2
         x: 576
-        y: 9
+        y: 0
         width: 64
-        height: 55
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -326,20 +326,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 226f024d3d30cbb4c9139f9605a2db39
-      internalID: 1746005349
+      spriteID: 2394f260dc908b040bcf0d835e0af357
+      internalID: -2070530358
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LarryWorkAgain_10
+      name: LarryWorkAgain64x64_10
       rect:
         serializedVersion: 2
         x: 640
-        y: 9
+        y: 0
         width: 64
-        height: 55
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -347,20 +347,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbb8b3e7ad5fd6449b196de39580f0e1
-      internalID: -392792671
+      spriteID: 2e305e8d3b1efa944bc32270bcbf48a6
+      internalID: -314312890
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LarryWorkAgain_11
+      name: LarryWorkAgain64x64_11
       rect:
         serializedVersion: 2
         x: 704
-        y: 9
+        y: 0
         width: 64
-        height: 55
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -368,20 +368,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01cfa503c0b87534398d6a9ddea89fa8
-      internalID: 191808222
+      spriteID: d4d4109081b1fa24b9f7680dcd2f650e
+      internalID: -583193422
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LarryWorkAgain_12
+      name: LarryWorkAgain64x64_12
       rect:
         serializedVersion: 2
         x: 768
-        y: 9
+        y: 0
         width: 64
-        height: 55
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -389,20 +389,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d592e336551d434f91b46b35edb29da
-      internalID: -1279251144
+      spriteID: 9ea1c290a5be74c41b8a5e03e3121f83
+      internalID: -555279500
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LarryWorkAgain_13
+      name: LarryWorkAgain64x64_13
       rect:
         serializedVersion: 2
         x: 832
-        y: 9
+        y: 0
         width: 64
-        height: 55
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -410,20 +410,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de3b326a4e27f0047a01cd9826be6963
-      internalID: -821334604
+      spriteID: 63fe75e95a90a0f42aa46c45520f518b
+      internalID: -1490456580
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LarryWorkAgain_14
+      name: LarryWorkAgain64x64_14
       rect:
         serializedVersion: 2
         x: 896
-        y: 9
+        y: 0
         width: 64
-        height: 55
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -431,20 +431,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2b4c2e7723bc634a8711f6d1a37e53e
-      internalID: -740357394
+      spriteID: 7fda801a6186f1c489724fe0d62e4fea
+      internalID: 2038982400
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LarryWorkAgain_15
+      name: LarryWorkAgain64x64_15
       rect:
         serializedVersion: 2
         x: 960
-        y: 9
+        y: 0
         width: 64
-        height: 55
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -452,20 +452,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afcbc849b8eeb584093c13005d94cf89
-      internalID: -2010447836
+      spriteID: 30d28db0b2e8f1348a992b27fbac82a1
+      internalID: -1846290789
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LarryWorkAgain_16
+      name: LarryWorkAgain64x64_16
       rect:
         serializedVersion: 2
         x: 1024
-        y: 9
+        y: 0
         width: 64
-        height: 55
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -473,8 +473,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ddb70d290749ae47b012a004837b991
-      internalID: -1172639469
+      spriteID: c9ccbe70518c1d246a4784c3ee5be457
+      internalID: 20063177
       vertices: []
       indices: 
       edges: []
@@ -490,23 +490,23 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      LarryWorkAgain_0: -620673089
-      LarryWorkAgain_1: -1778258314
-      LarryWorkAgain_10: -392792671
-      LarryWorkAgain_11: 191808222
-      LarryWorkAgain_12: -1279251144
-      LarryWorkAgain_13: -821334604
-      LarryWorkAgain_14: -740357394
-      LarryWorkAgain_15: -2010447836
-      LarryWorkAgain_16: -1172639469
-      LarryWorkAgain_2: -1303286589
-      LarryWorkAgain_3: 1689776377
-      LarryWorkAgain_4: -318473444
-      LarryWorkAgain_5: -1728941625
-      LarryWorkAgain_6: 114189749
-      LarryWorkAgain_7: -654905589
-      LarryWorkAgain_8: -1481902106
-      LarryWorkAgain_9: 1746005349
+      LarryWorkAgain64x64_0: -2126937823
+      LarryWorkAgain64x64_1: -671885946
+      LarryWorkAgain64x64_10: -314312890
+      LarryWorkAgain64x64_11: -583193422
+      LarryWorkAgain64x64_12: -555279500
+      LarryWorkAgain64x64_13: -1490456580
+      LarryWorkAgain64x64_14: 2038982400
+      LarryWorkAgain64x64_15: -1846290789
+      LarryWorkAgain64x64_16: 20063177
+      LarryWorkAgain64x64_2: 389977700
+      LarryWorkAgain64x64_3: 1261434481
+      LarryWorkAgain64x64_4: -969741630
+      LarryWorkAgain64x64_5: -370927600
+      LarryWorkAgain64x64_6: 2015220608
+      LarryWorkAgain64x64_7: -270229253
+      LarryWorkAgain64x64_8: -1703533339
+      LarryWorkAgain64x64_9: -2070530358
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
