@@ -5,8 +5,14 @@ public class DotController : MonoBehaviour
     public GameObject dotPrefab; // Reference to the next dot prefab
     public Vector2[] dotPositions; // Preset dot positions
     public int currentIndex = 1; // Index of the current dot position
+    SpriteRenderer sprite;
 
     private bool canSpawn = true; // Flag to control dot spawning
+
+    void Start()
+    {
+        sprite = GetComponent<SpriteRenderer>();
+    }
 
     void Update()
     {
@@ -46,6 +52,7 @@ public class DotController : MonoBehaviour
     {
         // Check if the collider is a CircleCollider2D
         CircleCollider2D circleCollider = collider.GetComponent<CircleCollider2D>();
+        sprite.color = Color.blue;
         if (circleCollider != null)
         {
             circleCollider.enabled = false; // Disable the collider
