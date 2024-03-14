@@ -11,6 +11,8 @@ public class TaskPrompterScript : MonoBehaviour
     public float interval = 45f;
     private bool timerEnabled;
     private ArrowScript arrowScript;
+
+    public static ProgressBar progressBar;
     // Start is called before the first frame update
     void Awake()
     {
@@ -19,6 +21,7 @@ public class TaskPrompterScript : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
         timerEnabled = false;
         arrowScript = GetComponentInChildren<ArrowScript>();
+        progressBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
     }
 
     // Update is called once per frame
@@ -51,9 +54,32 @@ public class TaskPrompterScript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        gameManager.StartTask(taskId);
-        arrowScript.Disable();
-        timerEnabled = false;
+        if (taskId == -1)
+        {
+            progressBar.IncreaseBar(0.1f);
+            arrowScript.Disable();
+            timerEnabled = false;
+            coll.enabled = false;
+        }
+        else if (taskId == -2)
+        {
+            progressBar.IncreaseBar(0.1f);
+            arrowScript.Disable();
+            timerEnabled = false;
+            coll.enabled = false;
+        }
+        else if (taskId == 5){
+            gameManager.StartTask(taskId);
+            arrowScript.Disable();
+            timerEnabled = false;
+            coll.enabled = false;
+            gameManager.EndTask(taskId);
+        }
+        else{
+            gameManager.StartTask(taskId);
+            arrowScript.Disable();
+            timerEnabled = false;
+        }
     }
 
     public int GetTaskID()

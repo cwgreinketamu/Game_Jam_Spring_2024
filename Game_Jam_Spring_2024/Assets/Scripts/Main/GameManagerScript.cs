@@ -28,7 +28,7 @@ public class GameManagerScript : MonoBehaviour
         timer = dayLength;
         miniSceneActive = false;
         prompters = GameObject.FindGameObjectsWithTag("Prompter");
-        ActivateTask(unusedTasks[Random.Range(0, 4)]); //replace 4 with unusedTasks.Count
+        ActivateTask(unusedTasks[Random.Range(0, 5)]); //replace 4 with unusedTasks.Count
         progressBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
         progressBar.IncreaseBar(0.1f * totalTasksCompleted); 
     }
@@ -54,6 +54,7 @@ public class GameManagerScript : MonoBehaviour
                 prompters[i].GetComponent<TaskPrompterScript>().ActivateTask();
             }
         }
+
     }
 
     public void StartTask(int taskId)
@@ -66,7 +67,10 @@ public class GameManagerScript : MonoBehaviour
                 {
                     inProgressTasks.Add(taskId);
                     unusedTasks.RemoveAt(i);
-                    SceneManager.LoadScene(taskId, LoadSceneMode.Additive);
+                    if(taskId != 5)
+                    {
+                        SceneManager.LoadScene(taskId, LoadSceneMode.Additive);
+                    }
                     Debug.Log("Scene " + taskId + " loaded");
                     miniSceneActive = true;
                     break;
@@ -97,15 +101,26 @@ public class GameManagerScript : MonoBehaviour
                     }
                     finishedTasks.Add(taskId);
                     inProgressTasks.RemoveAt(i);
-                    SceneManager.UnloadSceneAsync(taskId);
+                    if(taskId != 5)
+                    {
+                        SceneManager.UnloadSceneAsync(taskId);
+                    }
                     Debug.Log("Scene " + taskId + " unloaded");
                     miniSceneActive = false;
+                    //if task is a part 1 of 2, start part 2
+                    if(taskId == 3)
+                    {
+                        ActivateTask(-1);
+                    }
+                    else if(taskId == 5)
+                    {   
+                        ActivateTask(-2);
+                    }
                     //task succeeded, add to progress bar here
                     progressBar.IncreaseBar(0.1f); //the argument passed in is the percentage of the progress bar to increase by
                     ++tasksCompleted;
                     ++totalTasksCompleted;
-                    ActivateTask(unusedTasks[Random.Range(0, 4-tasksCompleted)]); //replace 5 with unusedTasks.Count
-                    break;
+                    ActivateTask(unusedTasks[Random.Range(0, 5-tasksCompleted)]); //replace 5 with unusedTasks.Count
                 }
             }
             if (miniSceneActive)

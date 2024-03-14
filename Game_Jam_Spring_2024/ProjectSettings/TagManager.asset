@@ -47,3 +47,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: UI
+    uniqueID: 2791240047
+    locked: 0
+  - name: Pause
+    uniqueID: 1360021639
+    locked: 0
