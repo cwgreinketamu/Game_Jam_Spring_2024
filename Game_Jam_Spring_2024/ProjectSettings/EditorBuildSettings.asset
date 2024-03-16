@@ -27,14 +27,14 @@ EditorBuildSettings:
     path: Assets/Scenes/FileUpload1.unity
     guid: 1d8d068a272156d45bc4dd1e29fae34a
   - enabled: 1
+    path: Assets/Scenes/Server Room.unity
+    guid: 0efdb6a05d122434db7805b21e842d28
+  - enabled: 1
     path: Assets/Scenes/FileUpload2.unity
     guid: 2d064b2de96dbe34dbe7b9ad0ef68db9
   - enabled: 1
     path: Assets/Scenes/Playtesting.unity
     guid: 3d72c395c98b5ae409d621245e4da04f
-  - enabled: 1
-    path: Assets/Scenes/Server Room.unity
-    guid: 0efdb6a05d122434db7805b21e842d28
   - enabled: 1
     path: Assets/Scenes/WritingRoom.unity
     guid: dee56827fb684bc4a9d910890991bfcb

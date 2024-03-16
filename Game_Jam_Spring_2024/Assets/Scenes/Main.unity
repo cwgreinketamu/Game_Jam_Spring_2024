@@ -447,15 +447,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4878801621546365221, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: taskId
-      value: -2
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20
+      value: -19.75
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.z
@@ -810,6 +810,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &584384057
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 852512589122371004, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
+      propertyPath: m_Name
+      value: Writing Prompter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878801621546365221, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
+      propertyPath: taskId
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
 --- !u!1 &676525370
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,11 +1019,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.02
+      value: 12.53
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.78
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3448,7 +3509,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 852512589122371004, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_Name
-      value: Hacked PC Prompter
+      value: Bug Fixing Prompter
       objectReference: {fileID: 0}
     - target: {fileID: 4878801621546365221, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: taskId
@@ -3456,11 +3517,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.74
+      value: -7.15
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.29
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3948,11 +4009,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.47
+      value: -19.68
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5
+      value: 10.5
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4061,7 +4122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 852512589122371004, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_Name
-      value: Pop-Ups Prompter
+      value: Hacked PC Prompter
       objectReference: {fileID: 0}
     - target: {fileID: 1303511230921596284, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -4089,11 +4150,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.29
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.34
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4634,11 +4695,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.57
+      value: -3.27
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.4
+      value: -6.8
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4703,7 +4764,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4878801621546365221, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: taskId
-      value: 5
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4711,7 +4772,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5142,6 +5203,7 @@ SceneRoots:
   - {fileID: 2012885945}
   - {fileID: 796545050}
   - {fileID: 406747235}
+  - {fileID: 584384057}
   - {fileID: 1333635682}
   - {fileID: 805951892}
   - {fileID: 503819078}

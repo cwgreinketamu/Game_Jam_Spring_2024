@@ -54,32 +54,10 @@ public class TaskPrompterScript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (taskId == -1)
-        {
-            progressBar.IncreaseBar(0.1f);
-            arrowScript.Disable();
-            timerEnabled = false;
-            coll.enabled = false;
-        }
-        else if (taskId == -2)
-        {
-            progressBar.IncreaseBar(0.1f);
-            arrowScript.Disable();
-            timerEnabled = false;
-            coll.enabled = false;
-        }
-        else if (taskId == 5){
-            gameManager.StartTask(taskId);
-            arrowScript.Disable();
-            timerEnabled = false;
-            coll.enabled = false;
-            gameManager.EndTask(taskId);
-        }
-        else{
-            gameManager.StartTask(taskId);
-            arrowScript.Disable();
-            timerEnabled = false;
-        }
+        gameManager.StartTask(taskId);
+        arrowScript.Disable();
+        timerEnabled = false;
+        coll.enabled = false;
     }
 
     public int GetTaskID()
@@ -91,7 +69,7 @@ public class TaskPrompterScript : MonoBehaviour
     {
         coll.enabled = true;
         timer = 0f;
-        Debug.Log("task " + taskId + " started");
+        //Debug.Log("task " + taskId + " started");
         timerEnabled = true;
         arrowScript.Enable();
         arrowScript.SetColor(new Color(0, 255, 0, 255));
