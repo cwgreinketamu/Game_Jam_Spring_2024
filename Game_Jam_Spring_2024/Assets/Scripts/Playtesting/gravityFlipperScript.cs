@@ -10,10 +10,16 @@ public class gravityFlipperScript : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip sound;
 
+    // Reference to the player's sprite renderer
+    private SpriteRenderer playerSpriteRenderer;
+
     void Start()
     {
         timer = 0;
         audioSource = GetComponent<AudioSource>();
+
+        // Find the player's sprite renderer
+        playerSpriteRenderer = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -32,7 +38,14 @@ public class gravityFlipperScript : MonoBehaviour
 
     void GravityFlip()
     {
+        // Reverse the gravity
         Physics2D.gravity *= -1f;
+
+        // Flip the player's sprite
+        Vector3 playerScale = transform.localScale;
+        playerScale.y *= -1f;
+        playerSpriteRenderer.flipY = !playerSpriteRenderer.flipY; // Flip over the y-axis
+        transform.localScale = playerScale;
     }
 
     void ChangeFlipperColor()
