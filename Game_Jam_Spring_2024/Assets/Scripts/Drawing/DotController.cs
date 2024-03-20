@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DotController : MonoBehaviour
 {
@@ -7,17 +8,27 @@ public class DotController : MonoBehaviour
     public int currentIndex = 1; // Index of the current dot position
     SpriteRenderer sprite;
 
+    private GameManagerScript gameManager;
+    private int taskId = 5;
+
     private bool canSpawn = true; // Flag to control dot spawning
+
+    private bool clicked = false;
 
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
+        if (GameObject.Find("GameManager") != null)
+        {
+            gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
+        }
     }
 
     void Update()
     {
         if (canSpawn && Input.GetMouseButton(0)) // Check if the left mouse button is held down
         {
+            clicked = true;
             // Convert mouse position to world coordinates
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             // Check if the mouse position overlaps with any collider
@@ -33,6 +44,15 @@ public class DotController : MonoBehaviour
                 }
             }
         }
+        if (canSpawn && !Input.GetMouseButton(0) && clicked)
+        {
+            Debug.Log("failed");
+            if (GameObject.Find("GameManager") != null)
+            {
+                gameManager.ResetMinigame(taskId);
+            }
+            
+        }
     }
 
     void SpawnNextDot()
@@ -41,10 +61,15 @@ public class DotController : MonoBehaviour
         {
             GameObject newDot = Instantiate(dotPrefab, dotPositions[currentIndex], Quaternion.identity);
             newDot.GetComponent<DotController>().currentIndex = currentIndex + 1; // Increment index for the new dot
+            newDot.GetComponent<DotController>().clicked = true;
         }
         else
         {
             Debug.Log("All dots have been spawned.");
+            if (GameObject.Find("GameManager") != null)
+            {
+                Invoke("End", 1);
+            }
         }
     }
 
@@ -57,5 +82,10 @@ public class DotController : MonoBehaviour
         {
             circleCollider.enabled = false; // Disable the collider
         }
+    }
+
+    private void End()
+    {
+        gameManager.EndTask(taskId);
     }
 }

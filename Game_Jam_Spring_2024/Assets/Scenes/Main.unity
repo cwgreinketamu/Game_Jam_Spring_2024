@@ -5166,7 +5166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01c166b999989d468e0b28588a63df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayLength: 600
+  dayLength: 90
   miniSceneActive: 0
   timerText: {fileID: 464336160}
 --- !u!4 &1268770017
@@ -6700,7 +6700,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 838681920}
   - {fileID: 2034669334}
-  - {fileID: 1854393747}
   - {fileID: 1728793308}
   - {fileID: 1935556048}
   - {fileID: 1268770017}
