@@ -7,7 +7,7 @@ using TMPro;
 
 public class GameManagerScript : MonoBehaviour
 {
-    private List<int> unusedTasks = new List<int>(){1,2,3,4,10,-2}; //add 5, 6, and 9 when minigames are done, 7 and 8 are pt2/pt3 of 6
+    private List<int> unusedTasks = new List<int>(){1,2,3,4,5,10,-2}; //add 5, 6, and 9 when minigames are done, 7 and 8 are pt2/pt3 of 6
     //-1 is coffee catcher pt2, memo pt1/pt2 is -2/-3
     private List<int> inProgressTasks = new List<int>();
     private List<int> finishedTasks = new List<int>();
@@ -171,5 +171,11 @@ public class GameManagerScript : MonoBehaviour
         float seconds = Mathf.FloorToInt(currentTime % 60);
 
         timerText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
+    }
+
+    public void ResetMinigame(int taskId)
+    {
+        SceneManager.UnloadSceneAsync(taskId);
+        SceneManager.LoadScene(taskId, LoadSceneMode.Additive);
     }
 }

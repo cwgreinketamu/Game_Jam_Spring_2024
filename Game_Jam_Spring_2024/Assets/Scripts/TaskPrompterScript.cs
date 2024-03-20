@@ -11,6 +11,7 @@ public class TaskPrompterScript : MonoBehaviour
     public float interval = 45f;
     private bool timerEnabled;
     private ArrowScript arrowScript;
+    private SpriteRenderer sprite;
 
     public static ProgressBar progressBar;
     // Start is called before the first frame update
@@ -22,6 +23,8 @@ public class TaskPrompterScript : MonoBehaviour
         timerEnabled = false;
         arrowScript = GetComponentInChildren<ArrowScript>();
         progressBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
+        sprite = GetComponent<SpriteRenderer>();
+        sprite.color = Color.white;
     }
 
     // Update is called once per frame
@@ -35,6 +38,7 @@ public class TaskPrompterScript : MonoBehaviour
                 coll.enabled = false;
                 gameManager.DeactivateTask(taskId);
                 arrowScript.Disable();
+                sprite.color = Color.white;
                 timer = 0f;
             }
             else if (timer > 2 * interval / 3)
@@ -58,6 +62,7 @@ public class TaskPrompterScript : MonoBehaviour
         arrowScript.Disable();
         timerEnabled = false;
         coll.enabled = false;
+        sprite.color = Color.white;
     }
 
     public int GetTaskID()
@@ -73,6 +78,7 @@ public class TaskPrompterScript : MonoBehaviour
         timerEnabled = true;
         arrowScript.Enable();
         arrowScript.SetColor(new Color(0, 255, 0, 255));
+        sprite.color = Color.magenta;
     }
 
     public void ResetTimer()
