@@ -23,6 +23,8 @@ public class GameManagerScript : MonoBehaviour
     public static ProgressBar progressBar;
 
     public TMPro.TMP_Text timerText;
+
+    public GameObject clipboard;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +56,7 @@ public class GameManagerScript : MonoBehaviour
             if (prompters[i].GetComponent<TaskPrompterScript>().GetTaskID() == taskId)
             {
                 prompters[i].GetComponent<TaskPrompterScript>().ActivateTask();
+                clipboard.GetComponent<ClipboardScript>().AddText(taskId);
             }
         }
 
@@ -109,6 +112,7 @@ public class GameManagerScript : MonoBehaviour
                 }
                 finishedTasks.Add(taskId);
                 inProgressTasks.RemoveAt(i);
+                clipboard.GetComponent<ClipboardScript>().RemoveText(taskId);
                 if(taskId > 0)
                 {
                     SceneManager.UnloadSceneAsync(taskId);
@@ -148,6 +152,7 @@ public class GameManagerScript : MonoBehaviour
             {
                 finishedTasks.Add(taskId);
                 unusedTasks.RemoveAt(i);
+                clipboard.GetComponent<ClipboardScript>().RemoveText(taskId);
                 Debug.Log("Task " + taskId + " failed");
                 //task failed, subtract from progress bar here
                 progressBar.DecreaseBar(0.1f); //The argument passed in is the percentage of the progress bar to reduce
