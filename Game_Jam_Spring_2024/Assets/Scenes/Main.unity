@@ -5345,6 +5345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayLength: 90
   miniSceneActive: 0
+  progressBar: {fileID: 2014749407}
   timerText: {fileID: 464336160}
   clipboard: {fileID: 1567804379}
 --- !u!4 &1268770017
@@ -6675,7 +6676,7 @@ Transform:
   m_GameObject: {fileID: 2034669330}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 15, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6853,6 +6854,7 @@ SceneRoots:
   - {fileID: 796545050}
   - {fileID: 406747235}
   - {fileID: 584384057}
+  - {fileID: 1679876240}
   - {fileID: 1333635682}
   - {fileID: 805951892}
   - {fileID: 503819078}

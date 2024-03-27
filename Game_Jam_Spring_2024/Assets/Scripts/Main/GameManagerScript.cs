@@ -7,20 +7,22 @@ using TMPro;
 
 public class GameManagerScript : MonoBehaviour
 {
-    private List<int> unusedTasks = new List<int>(){1,2,3,4,5,10,-2}; //add 5, 6, and 9 when minigames are done, 7 and 8 are pt2/pt3 of 6
+    private List<int> unusedTasks = new List<int>(){1,2,3,4,5,10,-2,-4}; //add 5, 6, and 9 when minigames are done, 7 and 8 are pt2/pt3 of 6
     //-1 is coffee catcher pt2, memo pt1/pt2 is -2/-3
     private List<int> inProgressTasks = new List<int>();
     private List<int> finishedTasks = new List<int>();
     private GameObject[] prompters;
     private int tasksCompleted = 0; //used to generate tasks on each individual day
     private static int totalTasksCompleted = 0; //used to track progress bar between days
+    
     private float timer;
+    private bool counting = false; //used to track if the timer is counting down
 
     public float dayLength = 60.0f;
 
     public bool miniSceneActive;
 
-    public static ProgressBar progressBar;
+    public ProgressBar progressBar;
 
     public TMPro.TMP_Text timerText;
 
@@ -31,20 +33,26 @@ public class GameManagerScript : MonoBehaviour
         timer = dayLength;
         miniSceneActive = false;
         prompters = GameObject.FindGameObjectsWithTag("Prompter");
-        ActivateTask(unusedTasks[Random.Range(0, unusedTasks.Count)]);
+        ActivateTask(-4);
         progressBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
         progressBar.IncreaseBar(0.1f * totalTasksCompleted); 
+        timerText.text = string.Format("");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
-        updateTimer(timer);
-        if (timer < 0)
+        if (counting)
         {
-            EndDay();
-            timer = dayLength;
+            timer -= Time.deltaTime;
+            updateTimer(timer);
+
+            if (timer < 0)
+            {
+                EndDay();
+                timer = dayLength;
+            }
         }
     }
 
@@ -87,7 +95,7 @@ public class GameManagerScript : MonoBehaviour
             }
             else
             {
-                if (taskId == -2)
+                if (taskId == -2 || taskId == -4)
                 {
                     unusedTasks.Remove(taskId);
                 }
@@ -131,6 +139,10 @@ public class GameManagerScript : MonoBehaviour
                 else
                 {
                     ActivateTask(unusedTasks[Random.Range(0, unusedTasks.Count)]);
+                    if (taskId == -4)
+                    {
+                        counting = true;
+                    }
                 }
                 //task succeeded, add to progress bar here
                 progressBar.IncreaseBar(0.1f); //the argument passed in is the percentage of the progress bar to increase by

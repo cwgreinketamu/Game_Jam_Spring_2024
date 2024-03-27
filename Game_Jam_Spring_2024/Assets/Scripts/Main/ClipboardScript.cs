@@ -16,7 +16,7 @@ public class ClipboardScript : MonoBehaviour
     private List<TMPro.TMP_Text> taskList = new List<TMPro.TMP_Text>();
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         descriptions.Add(1, "Fix hacked PC");
         descriptions.Add(2, "Remove bugs from code");
@@ -31,6 +31,7 @@ public class ClipboardScript : MonoBehaviour
         descriptions.Add(10, "Write dialogue");
         descriptions.Add(-2, "Pick up memos");
         descriptions.Add(-3, "Deliver memos");
+        descriptions.Add(-4, "Head to the meeting room to get your first task");
     }
 
     // Update is called once per frame
