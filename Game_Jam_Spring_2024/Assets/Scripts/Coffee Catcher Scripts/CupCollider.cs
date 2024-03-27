@@ -6,10 +6,11 @@ public class CupCollider : MonoBehaviour
     private int dropletsCollected = 0; // Counter for collected droplets
     private GameManagerScript gameManager;
     private int taskId = 3;
+    public Sprite newSprite; // New sprite to change to
+    private bool done = false;
 
     // Property to check if all droplets are collected
     public bool AllDropletsCollected => dropletsCollected >= dropletsToCollect;
-    private bool done = false;
 
     private void Start()
     {
@@ -36,9 +37,10 @@ public class CupCollider : MonoBehaviour
                 // Perform necessary actions when all droplets are collected
                 Debug.Log("All droplets collected!");
                 done = true;
+                GetComponent<SpriteRenderer>().sprite = newSprite;
                 if (GameObject.Find("GameManager") != null)
                 {
-                    Invoke("End", 1);
+                    End();
                 }
             }
         }
@@ -46,6 +48,7 @@ public class CupCollider : MonoBehaviour
 
     private void End()
     {
+        // Call GameManager to end task
         gameManager.EndTask(taskId);
     }
 }
