@@ -7,13 +7,13 @@ using TMPro;
 
 public class GameManagerScript : MonoBehaviour
 {
-    private List<int> unusedTasks = new List<int>(){1,2,3,4,5,10,-2,-4}; //add 5, 6, and 9 when minigames are done, 7 and 8 are pt2/pt3 of 6
+    private List<int> unusedTasks = new List<int>(){1,2,3,4,10,-2,-4}; //add 5, 6, and 9 when minigames are done, 7 and 8 are pt2/pt3 of 6
     //-1 is coffee catcher pt2, memo pt1/pt2 is -2/-3
+    private List<int> activatedTasks = new List<int>();
     private List<int> inProgressTasks = new List<int>();
     private List<int> finishedTasks = new List<int>();
     private GameObject[] prompters;
-    private int tasksCompleted = 0; //used to generate tasks on each individual day
-    private static int totalTasksCompleted = 0; //used to track progress bar between days
+    private static float totalProgress = 0; //used to track progress bar between days
     
     private float timer;
     private bool counting = false; //used to track if the timer is counting down
@@ -35,7 +35,7 @@ public class GameManagerScript : MonoBehaviour
         prompters = GameObject.FindGameObjectsWithTag("Prompter");
         ActivateTask(-4);
         progressBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
-        progressBar.IncreaseBar(0.1f * totalTasksCompleted); 
+        progressBar.SetBar(totalProgress); 
         timerText.text = string.Format("");
 
     }
@@ -64,9 +64,11 @@ public class GameManagerScript : MonoBehaviour
             if (prompters[i].GetComponent<TaskPrompterScript>().GetTaskID() == taskId)
             {
                 prompters[i].GetComponent<TaskPrompterScript>().ActivateTask();
-                clipboard.GetComponent<ClipboardScript>().AddText(taskId);
             }
         }
+        clipboard.GetComponent<ClipboardScript>().AddText(taskId);
+        unusedTasks.Remove(taskId);
+        activatedTasks.Add(taskId);
 
     }
 
@@ -76,12 +78,12 @@ public class GameManagerScript : MonoBehaviour
         {
             if (taskId > 0)
             {
-                for (int i = 0; i < unusedTasks.Count; i++)
+                for (int i = 0; i < activatedTasks.Count; i++)
                 {
-                    if (unusedTasks[i] == taskId)
+                    if (activatedTasks[i] == taskId)
                     {
                         inProgressTasks.Add(taskId);
-                        unusedTasks.RemoveAt(i);
+                        activatedTasks.RemoveAt(i);
                         SceneManager.LoadScene(taskId, LoadSceneMode.Additive);
                         miniSceneActive = true;
                         Debug.Log("Scene " + taskId + " loaded");
@@ -97,7 +99,7 @@ public class GameManagerScript : MonoBehaviour
             {
                 if (taskId == -2 || taskId == -4)
                 {
-                    unusedTasks.Remove(taskId);
+                    activatedTasks.Remove(taskId);
                 }
                 inProgressTasks.Add(taskId);
                 EndTask(taskId);
@@ -138,16 +140,23 @@ public class GameManagerScript : MonoBehaviour
                 }
                 else
                 {
-                    ActivateTask(unusedTasks[Random.Range(0, unusedTasks.Count)]);
                     if (taskId == -4)
                     {
                         counting = true;
+                        ActivateTask(unusedTasks[Random.Range(0, unusedTasks.Count)]);
+                        ActivateTask(unusedTasks[Random.Range(0, unusedTasks.Count)]);
+                    }
+                    if (unusedTasks.Count > 0)
+                    {
+                        ActivateTask(unusedTasks[Random.Range(0, unusedTasks.Count)]);
+                    }
+                    else
+                    {
+                        Debug.Log("All tasks completed");
                     }
                 }
                 //task succeeded, add to progress bar here
-                progressBar.IncreaseBar(0.1f); //the argument passed in is the percentage of the progress bar to increase by
-                ++tasksCompleted;
-                ++totalTasksCompleted;
+                progressBar.IncreaseBar(taskId); //the argument passed in is the percentage of the progress bar to increase by
             }
         }
         if (miniSceneActive)
@@ -163,13 +172,11 @@ public class GameManagerScript : MonoBehaviour
             if (unusedTasks[i] == taskId)
             {
                 finishedTasks.Add(taskId);
-                unusedTasks.RemoveAt(i);
+                activatedTasks.RemoveAt(i);
                 clipboard.GetComponent<ClipboardScript>().RemoveText(taskId);
                 Debug.Log("Task " + taskId + " failed");
                 //task failed, subtract from progress bar here
-                progressBar.DecreaseBar(0.1f); //The argument passed in is the percentage of the progress bar to reduce
-                ++tasksCompleted;
-                ++totalTasksCompleted;
+                progressBar.DecreaseBar(taskId); //The argument passed in is the percentage of the progress bar to reduce
                 ActivateTask(unusedTasks[Random.Range(0, unusedTasks.Count)]);
                 break;
             }
@@ -194,5 +201,15 @@ public class GameManagerScript : MonoBehaviour
     {
         SceneManager.UnloadSceneAsync(taskId);
         SceneManager.LoadScene(taskId, LoadSceneMode.Additive);
+    }
+
+    public void IncreaseProgress(float value)
+    {
+        totalProgress += value;
+    }
+
+    public void DecreaseProgress(float value)
+    {
+        totalProgress -= value;
     }
 }
