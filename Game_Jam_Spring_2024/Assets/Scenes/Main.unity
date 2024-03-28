@@ -6253,6 +6253,10 @@ PrefabInstance:
       propertyPath: taskId
       value: -4
       objectReference: {fileID: 0}
+    - target: {fileID: 4878801621546365221, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
+      propertyPath: interval
+      value: 999
+      objectReference: {fileID: 0}
     - target: {fileID: 5812204607298580891, guid: 22c40e9f98619f54983b297b75b1cb32, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18
