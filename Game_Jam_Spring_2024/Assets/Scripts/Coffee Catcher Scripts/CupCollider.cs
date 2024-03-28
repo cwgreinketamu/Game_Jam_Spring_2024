@@ -12,12 +12,15 @@ public class CupCollider : MonoBehaviour
     // Property to check if all droplets are collected
     public bool AllDropletsCollected => dropletsCollected >= dropletsToCollect;
 
+    AudioSource drop;
+
     private void Start()
     {
         if (GameObject.Find("GameManager") != null)
         {
             gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
         }
+        drop = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,6 +33,10 @@ public class CupCollider : MonoBehaviour
 
             // Increment the droplet counter
             dropletsCollected++;
+
+            //play droplet sound
+            
+            drop.Play();
 
             // Check if the desired number of droplets is collected
             if (AllDropletsCollected && !done)

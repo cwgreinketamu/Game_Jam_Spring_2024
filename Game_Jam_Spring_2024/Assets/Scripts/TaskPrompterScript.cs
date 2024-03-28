@@ -14,6 +14,8 @@ public class TaskPrompterScript : MonoBehaviour
     private SpriteRenderer sprite;
 
     public static ProgressBar progressBar;
+
+    AudioSource taskComplete;
     // Start is called before the first frame update
     void Awake()
     {
@@ -25,6 +27,7 @@ public class TaskPrompterScript : MonoBehaviour
         progressBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
         sprite = GetComponent<SpriteRenderer>();
         sprite.color = Color.white;
+        taskComplete = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -95,5 +98,10 @@ public class TaskPrompterScript : MonoBehaviour
     public void DisableArrow()
     {
         arrowScript.Disable();
+    }
+
+    public void PlayTaskCompleteSound()
+    {
+        taskComplete.Play();
     }
 }

@@ -118,6 +118,7 @@ public class GameManagerScript : MonoBehaviour
                     if (prompters[j].GetComponent<TaskPrompterScript>().GetTaskID() == taskId)
                     {
                         prompters[j].GetComponent<TaskPrompterScript>().DisableArrow();
+                        prompters[j].GetComponent<TaskPrompterScript>().PlayTaskCompleteSound();
                     }
                 }
                 finishedTasks.Add(taskId);
