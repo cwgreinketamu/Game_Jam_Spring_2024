@@ -35,7 +35,7 @@ public class CupCollider : MonoBehaviour
             dropletsCollected++;
 
             //play droplet sound
-            
+            drop.time = 0.2f;
             drop.Play();
 
             // Check if the desired number of droplets is collected
