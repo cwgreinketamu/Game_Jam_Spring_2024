@@ -10,6 +10,13 @@ public class BugSpawning : MonoBehaviour
     private GameManagerScript gameManager;
     private int taskId = 2;
 
+    AudioSource bugSounds;
+    AudioSource bugDeath;
+    AudioSource bugCrawl1;
+    AudioSource bugCrawl2;
+    AudioSource bugCrawl3;
+
+
     private void Start()
     {
         if (GameObject.Find("GameManager") != null)
@@ -21,19 +28,42 @@ public class BugSpawning : MonoBehaviour
             Vector3 randomSpawnPosition = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(-2.5f, 2.5f), 0);
             Instantiate(bugPrefab, randomSpawnPosition, Quaternion.identity);
         }
+
+        bugDeath = GetComponents<AudioSource>()[0];
+        bugCrawl1 = GetComponents<AudioSource>()[1];
+        bugCrawl2 = GetComponents<AudioSource>()[2];
+        bugCrawl3 = GetComponents<AudioSource>()[3];
+        
+        bugCrawl1.Play();
+        bugCrawl2.Play();
+        bugCrawl3.Play();
     }
 
     private void Update()
     {
-
+        if (bugsKilled > 0)
+        {
+            bugCrawl1.Stop();
+            if (bugsKilled > 1)
+            {
+                bugCrawl2.Stop();
+                if (bugsKilled > 2)
+                {
+                    bugCrawl3.Stop();
+                }
+            }
+        }
     }
     
     public void KillBug()
     {
         ++bugsKilled;
+        bugDeath.volume = 0.2f;
+        bugDeath.Play();
         if (bugsKilled == bugsToSpawn)
         {
             Debug.Log("All bugs killed!");
+            
             if (GameObject.Find("GameManager") != null)
             {
                 Invoke("End", 1);

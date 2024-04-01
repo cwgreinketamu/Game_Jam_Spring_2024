@@ -13,6 +13,8 @@ public class soundwaveScript : MonoBehaviour
     public float lengthConstant = 3;
     public float xConstant = 1;
 
+    AudioSource sound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,9 @@ public class soundwaveScript : MonoBehaviour
             frequency = Random.Range(0.14f, 0.20f);
         }
         
+        sound = GetComponent<AudioSource>();
+        sound.Play();
+        sound.volume = 0.5f;
     }
 
     // Update is called once per frame

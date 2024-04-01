@@ -24,6 +24,8 @@ public class usersoundwaveScript : MonoBehaviour
     private GameManagerScript gameManager;
     private int taskId = 4;
 
+    AudioSource staticSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,9 @@ public class usersoundwaveScript : MonoBehaviour
         }
         minX = slider.GetComponent<SliderScript>().minX;
         maxX = slider.GetComponent<SliderScript>().maxX;
+
+        staticSound = GetComponent<AudioSource>();
+        staticSound.Play();
     }
 
     // Update is called once per frame
@@ -42,6 +47,10 @@ public class usersoundwaveScript : MonoBehaviour
     {
         frequency = 0.01f + (slider.transform.position.x - minX) / (maxX - minX) * (0.20f - 0.01f);
         Draw();
+        float frequencyDifference = Mathf.Abs(goalScript.frequency - frequency);
+        float normalizedDifference = Mathf.Clamp01(frequencyDifference / (0.20f - 0.01f));
+        staticSound.volume = normalizedDifference * 5;
+
         if (goalScript.frequency - interval1 < frequency && goalScript.frequency + interval1 > frequency)
         {
             lineRenderer.material.SetColor("_Color", new Color(0, 255, 0, 255));
@@ -89,6 +98,7 @@ public class usersoundwaveScript : MonoBehaviour
 
     private void End()
     {
+        staticSound.Stop();
         gameManager.EndTask(taskId);
     }
 }

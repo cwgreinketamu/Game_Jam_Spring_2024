@@ -12,6 +12,9 @@ public class PopUpSpawner : MonoBehaviour
     private GameManagerScript gameManager;
     private int taskId = 1;
 
+    AudioSource popUp;
+    AudioSource popUpClose;
+
     private void Start()
     {
         StartCoroutine(Spawner());
@@ -21,6 +24,9 @@ public class PopUpSpawner : MonoBehaviour
         {
             gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
         }
+
+        popUp = GetComponents<AudioSource>()[0];
+        popUpClose = GetComponents<AudioSource>()[1];
     }
 
     private IEnumerator Spawner()
@@ -39,6 +45,8 @@ public class PopUpSpawner : MonoBehaviour
 
             Instantiate(windowToSpawn, randomSpawnPosition, Quaternion.identity);
 
+            popUp.Play();
+
             windowsSpawned++; // Increment the counter
         }
     }
@@ -47,6 +55,7 @@ public class PopUpSpawner : MonoBehaviour
     public void DecreaseWindowsCount()
     {
         windowsRemaining--;
+        popUpClose.Play();
         if (windowsRemaining <= 0)
         {
             // All ads have been destroyed, perform necessary actions here
