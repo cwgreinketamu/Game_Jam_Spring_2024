@@ -10,36 +10,43 @@ public class PlayerMovement : MonoBehaviour
     float vertical;
     float moveLimit = 0.7f;
 
-    public float runSpeed = 20.0f;
+    public float walkSpeed = 5.0f;
+    public float sprintSpeed = 20.0f;
+    public float acceleration = 0.1f;
 
     public GameManagerScript gameManager;
 
-    void Start ()
+    void Start()
     {
-        body = GetComponent<Rigidbody2D>(); 
+        body = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
     }
 
-    void Update ()
+    void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical"); 
+        vertical = Input.GetAxisRaw("Vertical");
     }
 
     private void FixedUpdate()
-    {  
+    {
         if (!gameManager.miniSceneActive)
         {
-            //the below if statement is unnecessary if the player is using a controller as controllers already account for diagonal movement. 
-            if (horizontal != 0 && vertical != 0)
-            {
-                horizontal *= moveLimit;
-                vertical *= moveLimit;
-            }
+            // Slow acceleration
+            Vector2 moveInput = new Vector2(horizontal, vertical).normalized;
+            Vector2 currentVelocity = body.velocity;
+            Vector2 targetVelocity = moveInput * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed);
+            Vector2 velocityDifference = targetVelocity - currentVelocity;
+            Vector2 accelerationStep = velocityDifference * acceleration;
 
-            body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+            // Apply acceleration
+            body.velocity += accelerationStep;
+
+            // Limit velocity to the maximum sprint speed
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                body.velocity = Vector2.ClampMagnitude(body.velocity, sprintSpeed);
+            }
         }
     }
-
-
 }
