@@ -20,7 +20,7 @@ public class Drawline : MonoBehaviour
         {
             CreateBrush();
         }
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0) && currentLineRenderer != null)
         {
             Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
             if (mousePos != lastPos)
@@ -37,7 +37,7 @@ public class Drawline : MonoBehaviour
 
     void CreateBrush()
     {
-        GameObject brushInstance = Instantiate(brush);
+        GameObject brushInstance = Instantiate(brush, this.transform);
         currentLineRenderer = brushInstance.GetComponent<LineRenderer>();
 
         Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);

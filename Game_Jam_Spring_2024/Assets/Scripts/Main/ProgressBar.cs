@@ -11,7 +11,7 @@ public class ProgressBar : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-       progressBar = GetComponent<Image>();
+        progressBar = GetComponent<Image>();
         progressAmounts.Add(1, 0.05f);
         progressAmounts.Add(2, 0.05f);
         progressAmounts.Add(3, 0.05f);

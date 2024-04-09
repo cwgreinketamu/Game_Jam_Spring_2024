@@ -7,11 +7,13 @@ public class PauseMenu : MonoBehaviour
 {
     public Canvas pauseMenu;
     AudioSource clickSound;
+    private GameManagerScript gameManager;
     // Start is called before the first frame update
     void Start()
     {
         pauseMenu.enabled = false;
         clickSound = GetComponent<AudioSource>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
     }
 
     // Update is called once per frame
@@ -38,6 +40,7 @@ public class PauseMenu : MonoBehaviour
     {
         clickSound.Play();
         Time.timeScale = 1;
+        gameManager.SetProgess(0);
         SceneManager.LoadScene("StartScreen");
     }
 
