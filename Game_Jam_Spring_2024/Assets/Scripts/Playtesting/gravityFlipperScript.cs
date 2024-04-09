@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gravityFlipperScript : MonoBehaviour
+public class GravityFlipperScript : MonoBehaviour
 {
-    private float timer;
-    public float delay = 1;
-    private GameObject[] gravityFlippers;
+    public float delay = 1f;
+    private float lastFlipTime;
+
     public AudioSource audioSource;
     public AudioClip sound;
 
@@ -15,7 +15,7 @@ public class gravityFlipperScript : MonoBehaviour
 
     void Start()
     {
-        timer = 0;
+        lastFlipTime = Time.time - delay; // Ensure immediate flip is possible
         audioSource = GetComponent<AudioSource>();
 
         // Find the player's sprite renderer
@@ -24,48 +24,42 @@ public class gravityFlipperScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && Time.time - lastFlipTime > delay)
         {
-            if (timer == 0 || Time.time - timer > delay)
-            {
-                GravityFlip();
-                audioSource.PlayOneShot(sound);
-                ChangeFlipperColor();
-            }
-            timer = Time.time;
+            GravityFlip();
+            audioSource.PlayOneShot(sound);
+            lastFlipTime = Time.time;
         }
     }
 
     void GravityFlip()
     {
         // Reverse the gravity
+        playerSpriteRenderer.flipY = !playerSpriteRenderer.flipY;
+        ChangeFlipperColor();
         Physics2D.gravity *= -1f;
 
         // Flip the player's sprite
-        Vector3 playerScale = transform.localScale;
-        playerScale.y *= -1f;
-        playerSpriteRenderer.flipY = !playerSpriteRenderer.flipY; // Flip over the y-axis
-        transform.localScale = playerScale;
+        // Change flipper color based on gravity direction
+
     }
 
     void ChangeFlipperColor()
     {
-        gravityFlippers = GameObject.FindGameObjectsWithTag("GravityFlipper");
+        GameObject[] gravityFlippers = GameObject.FindGameObjectsWithTag("GravityFlipper");
         foreach (GameObject flipper in gravityFlippers)
         {
             SpriteRenderer flipperSpriteRenderer = flipper.GetComponent<SpriteRenderer>();
+            flipperSpriteRenderer.flipY = !flipperSpriteRenderer.flipY;
             if (flipperSpriteRenderer != null)
             {
-                Vector3 localScaleFlipper = flipper.transform.localScale;
-                localScaleFlipper.y *= -1f;
-                flipper.transform.localScale = localScaleFlipper;
-                if (localScaleFlipper.y > 0f)
+                if (Physics2D.gravity.y > 0f)
                 {
-                    flipperSpriteRenderer.color = Color.blue;
+                    flipperSpriteRenderer.color = Color.blue; // Flipped upwards
                 }
                 else
                 {
-                    flipperSpriteRenderer.color = Color.red;
+                    flipperSpriteRenderer.color = Color.red; // Flipped downwards
                 }
             }
         }
