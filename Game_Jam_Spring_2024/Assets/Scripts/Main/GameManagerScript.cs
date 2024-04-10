@@ -7,7 +7,7 @@ using TMPro;
 
 public class GameManagerScript : MonoBehaviour
 {
-    private List<int> unusedTasks = new List<int>(){1,2,3,4,5,9,10,-2,-4}; //add 5, 6, and 9 when minigames are done, 7 and 8 are pt2/pt3 of 6
+    private List<int> unusedTasks = new List<int>(){1,2,3,4,5,6,9,10,-2,-4}; //add 5, 6, and 9 when minigames are done, 7 and 8 are pt2/pt3 of 6
     //-1 is coffee catcher pt2, memo pt1/pt2 is -2/-3
     private List<int> activatedTasks = new List<int>();
     private List<int> inProgressTasks = new List<int>();
@@ -142,6 +142,14 @@ public class GameManagerScript : MonoBehaviour
                 else if(taskId == -2) //memo
                 {   
                     ActivateTask(-3);
+                }
+                else if (taskId == 6)
+                {
+                    ActivateTask(7);
+                }
+                else if (taskId == 7)
+                {
+                    ActivateTask(8);
                 }
                 else
                 {
