@@ -15,10 +15,12 @@ public class PlayerMovement : MonoBehaviour
     public float acceleration = 0.1f;
 
     public GameManagerScript gameManager;
+    private Animator anim;
 
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
     }
 
@@ -38,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
             Vector2 targetVelocity = moveInput * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed);
             Vector2 velocityDifference = targetVelocity - currentVelocity;
             Vector2 accelerationStep = velocityDifference * acceleration;
-
+            Animate(moveInput, currentVelocity, accelerationStep);
             // Apply acceleration
             body.velocity += accelerationStep;
 
@@ -52,5 +54,20 @@ public class PlayerMovement : MonoBehaviour
         {
             body.velocity = Vector2.zero;
         }
+    }
+
+    private void Animate(Vector2 moveVector, Vector2 currentVelocity, Vector2 acceleration)
+    {
+        anim.SetFloat("MovementX", moveVector.x);
+        anim.SetFloat("MovementY", moveVector.y);
+
+        if(Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1 || Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1)
+        {
+            anim.SetFloat("LastMoveX", acceleration.x);
+            anim.SetFloat("LastMoveY", acceleration.y);
+            //Debug.Log(Input.GetAxisRaw("Horizontal") + Input.GetAxisRaw("Vertical"));
+        }
+
+        
     }
 }
