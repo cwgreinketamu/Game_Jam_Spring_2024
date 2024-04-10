@@ -7,11 +7,13 @@ using TMPro;
 
 public class GameManagerScript : MonoBehaviour
 {
-    private List<int> unusedTasks = new List<int>(){1,2,3,4,5,6,9,10,-2,-4}; //add 5, 6, and 9 when minigames are done, 7 and 8 are pt2/pt3 of 6
+    private List<int> unusedTasks = new List<int>(){1,2,3,4,5,9,10,-2,-4}; //add 5, 6, and 9 when minigames are done, 7 and 8 are pt2/pt3 of 6
     //-1 is coffee catcher pt2, memo pt1/pt2 is -2/-3
     private List<int> activatedTasks = new List<int>();
     private List<int> inProgressTasks = new List<int>();
     private List<int> finishedTasks = new List<int>();
+    private List<int> reusableTasks = new List<int>() { 1, 2, 3, 4, 5, 9, 10, -2};
+
     private GameObject[] prompters;
     private static float totalProgress = 0; //used to track progress bar between days
     
@@ -156,6 +158,26 @@ public class GameManagerScript : MonoBehaviour
                     else
                     {
                         Debug.Log("All tasks completed");
+                        bool flag = true;
+                        while (flag)
+                        {
+                            int reusedTaskIndex = Random.Range(0, finishedTasks.Count); //index of task to reuse by moving to unusedTasks then activating
+                            if (finishedTasks[reusedTaskIndex] == taskId) //makes sure it doesnt instantly generate the task that was just finished
+                            {
+                                continue;
+                            }
+                            for (int k = 0; k < reusableTasks.Count; ++k)
+                            {
+                                if (finishedTasks[reusedTaskIndex] == reusableTasks[k]) //checks that the randomly choosen finished task is reusable
+                                {
+                                    unusedTasks.Add(finishedTasks[reusedTaskIndex]);
+                                    ActivateTask(finishedTasks[reusedTaskIndex]);
+                                    finishedTasks.RemoveAt(reusedTaskIndex);
+                                    flag = false;
+                                    break;
+                                }
+                            }
+                        }
                     }
                 }
                 //task succeeded, add to progress bar here
@@ -180,7 +202,34 @@ public class GameManagerScript : MonoBehaviour
                 Debug.Log("Task " + taskId + " failed");
                 //task failed, subtract from progress bar here
                 progressBar.DecreaseBar(taskId); //The argument passed in is the percentage of the progress bar to reduce
-                ActivateTask(unusedTasks[Random.Range(0, unusedTasks.Count)]);
+                if (unusedTasks.Count > 0)
+                {
+                    ActivateTask(unusedTasks[Random.Range(0, unusedTasks.Count)]);
+                }
+                else
+                {
+                    Debug.Log("All tasks completed");
+                    bool flag = true;
+                    while (flag)
+                    {
+                        int reusedTaskIndex = Random.Range(0, finishedTasks.Count); //index of task to reuse by moving to unusedTasks then activating
+                        if (finishedTasks[reusedTaskIndex] == taskId) //makes sure it doesnt instantly generate the task that was just finished
+                        {
+                            continue;
+                        }
+                        for (int k = 0; k < reusableTasks.Count; ++k)
+                        {
+                            if (finishedTasks[reusedTaskIndex] == reusableTasks[k]) //checks that the randomly choosen finished task is reusable
+                            {
+                                unusedTasks.Add(finishedTasks[reusedTaskIndex]);
+                                ActivateTask(finishedTasks[reusedTaskIndex]);
+                                finishedTasks.RemoveAt(reusedTaskIndex);
+                                flag = false;
+                                break;
+                            }
+                        }
+                    }
+                }
                 break;
             }
         }
