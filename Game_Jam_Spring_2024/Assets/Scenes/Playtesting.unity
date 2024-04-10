@@ -635,7 +635,7 @@ GameObject:
   - component: {fileID: 832846678}
   - component: {fileID: 832846677}
   - component: {fileID: 832846676}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Platforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7820,7 +7820,7 @@ GameObject:
   - component: {fileID: 1205829592}
   - component: {fileID: 1205829594}
   - component: {fileID: 1205829593}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67455,7 +67455,7 @@ GameObject:
   - component: {fileID: 1398795252}
   - component: {fileID: 1398795251}
   - component: {fileID: 1398795250}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67607,7 +67607,7 @@ GameObject:
   - component: {fileID: 1481211024}
   - component: {fileID: 1481211023}
   - component: {fileID: 1481211022}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -68145,7 +68145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1843936384}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68327,7 +68327,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2053524016}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &2053524018
 Camera:
   m_ObjectHideFlags: 0
@@ -68355,10 +68355,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+    x: 0.125
+    y: 0.125
+    width: 0.75
+    height: 0.75
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -68367,7 +68367,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 448
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

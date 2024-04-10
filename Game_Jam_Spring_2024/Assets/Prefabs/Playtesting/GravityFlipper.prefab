@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1789607818893126297}
   - component: {fileID: 2343823187830140979}
   - component: {fileID: 6459367407450937312}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GravityFlipper
   m_TagString: GravityFlipper
   m_Icon: {fileID: 0}

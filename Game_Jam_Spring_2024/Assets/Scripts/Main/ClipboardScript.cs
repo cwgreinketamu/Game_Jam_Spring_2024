@@ -51,6 +51,7 @@ public class ClipboardScript : MonoBehaviour
 
     public void RemoveText(int taskId)
     {
+        Debug.Log("Removing task from clipboard");
         for (int i = 0; i < taskList.Count; i++)
         {
             if (taskList[i].text == descriptions[taskId])

@@ -48,5 +48,9 @@ public class PlayerMovement : MonoBehaviour
                 body.velocity = Vector2.ClampMagnitude(body.velocity, sprintSpeed);
             }
         }
+        else
+        {
+            body.velocity = Vector2.zero;
+        }
     }
 }

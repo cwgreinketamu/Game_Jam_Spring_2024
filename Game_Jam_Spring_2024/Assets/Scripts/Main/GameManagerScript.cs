@@ -7,7 +7,7 @@ using TMPro;
 
 public class GameManagerScript : MonoBehaviour
 {
-    private List<int> unusedTasks = new List<int>(){1,2,3,4,5,10,-2,-4}; //add 5, 6, and 9 when minigames are done, 7 and 8 are pt2/pt3 of 6
+    private List<int> unusedTasks = new List<int>(){1,2,3,4,5,6,9,10,-2,-4}; //add 5, 6, and 9 when minigames are done, 7 and 8 are pt2/pt3 of 6
     //-1 is coffee catcher pt2, memo pt1/pt2 is -2/-3
     private List<int> activatedTasks = new List<int>();
     private List<int> inProgressTasks = new List<int>();
@@ -27,6 +27,7 @@ public class GameManagerScript : MonoBehaviour
     public TMPro.TMP_Text timerText;
 
     public GameObject clipboard;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +38,6 @@ public class GameManagerScript : MonoBehaviour
         progressBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
         progressBar.SetBar(totalProgress); 
         timerText.text = string.Format("");
-
     }
 
     // Update is called once per frame
@@ -123,8 +123,10 @@ public class GameManagerScript : MonoBehaviour
                 }
                 finishedTasks.Add(taskId);
                 inProgressTasks.RemoveAt(i);
+                Debug.Log("Calling removeText cuz finished");
                 clipboard.GetComponent<ClipboardScript>().RemoveText(taskId);
-                if(taskId > 0)
+                Debug.Log("Calling removeText successful");
+                if (taskId > 0)
                 {
                     SceneManager.UnloadSceneAsync(taskId);
                 }
@@ -168,9 +170,9 @@ public class GameManagerScript : MonoBehaviour
 
     public void DeactivateTask(int taskId) //timer ran out
     {
-        for (int i = 0; i < unusedTasks.Count; i++)
+        for (int i = 0; i < activatedTasks.Count; i++)
         {
-            if (unusedTasks[i] == taskId)
+            if (activatedTasks[i] == taskId)
             {
                 finishedTasks.Add(taskId);
                 activatedTasks.RemoveAt(i);

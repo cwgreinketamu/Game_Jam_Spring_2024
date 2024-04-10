@@ -18,7 +18,7 @@ public class ProgressBar : MonoBehaviour
         progressAmounts.Add(-1, 0.05f);
         progressAmounts.Add(4, 0.05f);
         progressAmounts.Add(5, 0.05f);
-        progressAmounts.Add(6, 0.05f);
+        progressAmounts.Add(6, 0.00f);
         progressAmounts.Add(7, 0.05f);
         progressAmounts.Add(8, 0.05f);
         progressAmounts.Add(9, 0.05f);
