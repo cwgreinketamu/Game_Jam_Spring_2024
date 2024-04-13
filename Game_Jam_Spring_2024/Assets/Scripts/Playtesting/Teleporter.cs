@@ -6,13 +6,13 @@ public class Teleporter : MonoBehaviour
     public Transform destination; // Destination point for teleportation
     public float teleportDelay = 0.1f; // Delay before teleportation
     public bool spawnToLeft = true; // Flag to determine whether to spawn the player to the left or right of the destination object
-    private Collider2D destinationCollider; // Reference to the destination teleporter's collider
+    private CapsuleCollider2D destinationCollider; // Reference to the destination teleporter's collider
     private bool isTeleporting = false; // Flag to track whether teleportation is in progress
 
     private void Start()
     {
         // Get the destination teleporter's collider
-        destinationCollider = destination.GetComponent<Collider2D>();
+        destinationCollider = destination.GetComponent<CapsuleCollider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

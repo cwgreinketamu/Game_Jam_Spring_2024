@@ -46,15 +46,15 @@ public class TaskPrompterScript : MonoBehaviour
             }
             else if (timer > 2 * interval / 3)
             {
-                arrowScript.SetColor(new Color(255, 0, 0, 255));
+                arrowScript.SetColor("Red");
             }
             else if (timer > interval / 3)
             {
-                arrowScript.SetColor(new Color(255, 255, 0, 255));
+                arrowScript.SetColor("Yellow");
             }
             else
             {
-                arrowScript.SetColor(new Color(0, 255, 0, 255));
+                arrowScript.SetColor("Green");
             }
         }
     }
@@ -80,7 +80,7 @@ public class TaskPrompterScript : MonoBehaviour
         //Debug.Log("task " + taskId + " started");
         timerEnabled = true;
         arrowScript.Enable();
-        arrowScript.SetColor(new Color(0, 255, 0, 255));
+        arrowScript.SetColor("Green");
         sprite.color = Color.magenta;
     }
 

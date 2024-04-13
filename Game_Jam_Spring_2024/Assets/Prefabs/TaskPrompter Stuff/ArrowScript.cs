@@ -11,6 +11,11 @@ public class ArrowScript : MonoBehaviour
     public float borderSize = 100f;
     private Image image;
     private bool active;
+
+    public Sprite GreenArrow;
+    public Sprite YellowArrow;
+    public Sprite RedArrow;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -89,8 +94,19 @@ public class ArrowScript : MonoBehaviour
         active = false;
     }
 
-    public void SetColor(Color col)
+    public void SetColor(string color)
     {
-        image.color = col;
+        if (color == "Green")
+        {
+            image.sprite = GreenArrow;
+        }
+        else if (color == "Yellow")
+        {
+            image.sprite = YellowArrow;
+        }
+        if (color == "Red")
+        {
+            image.sprite = RedArrow;
+        }
     }
 }
