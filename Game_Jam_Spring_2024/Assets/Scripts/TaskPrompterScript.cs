@@ -12,9 +12,8 @@ public class TaskPrompterScript : MonoBehaviour
     private bool timerEnabled;
     private ArrowScript arrowScript;
     private SpriteRenderer sprite;
-
     public static ProgressBar progressBar;
-
+    public TaskCollScript taskCollScript;
     AudioSource taskComplete;
     // Start is called before the first frame update
     void Awake()
@@ -28,6 +27,7 @@ public class TaskPrompterScript : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         sprite.color = Color.white;
         taskComplete = GetComponent<AudioSource>();
+        taskCollScript = GetComponentInChildren<TaskCollScript>();
     }
 
     // Update is called once per frame
@@ -39,6 +39,7 @@ public class TaskPrompterScript : MonoBehaviour
             if (timer > interval)
             {
                 coll.enabled = false;
+                taskCollScript.SetColl(false);
                 gameManager.DeactivateTask(taskId);
                 arrowScript.Disable();
                 sprite.color = Color.white;
@@ -61,11 +62,19 @@ public class TaskPrompterScript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        gameManager.StartTask(taskId);
-        arrowScript.Disable();
-        timerEnabled = false;
-        coll.enabled = false;
-        sprite.color = Color.white;
+        if (taskCollScript.inRange)
+        {
+            gameManager.StartTask(taskId);
+            arrowScript.Disable();
+            timerEnabled = false;
+            coll.enabled = false;
+            taskCollScript.SetColl(false);
+            sprite.color = Color.white;
+        }
+        else
+        {
+            Debug.Log("not in range");
+        }
     }
 
     public int GetTaskID()
@@ -76,6 +85,7 @@ public class TaskPrompterScript : MonoBehaviour
     public void ActivateTask()
     {
         coll.enabled = true;
+        taskCollScript.SetColl(true);
         timer = 0f;
         //Debug.Log("task " + taskId + " started");
         timerEnabled = true;
