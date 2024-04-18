@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 public class WritingScript : MonoBehaviour
 {
     private int charCount = 0;
-    public string sampleText = "This is sample text for a minigame. The player will type and this text will be produced. This will be replaced with writing that matches the game being created by larry. Until that text is written, this text will exist in its place, as a placeholder. Hopefully the player will be typing all of this out. I don't know what else to type. I've spent too much time doing this.";
+    public string sampleText = "Hey, you. You're finally awake. You were trying to cross the border, right? Walked right into that Imperial ambush, same as us, and that thief over there. Damn you Stormcloaks. Skyrim was fine until you came along. Empire was nice and lazy. If they hadn't been looking for you, I could've stolen that horse and be halfway to Hammerfell.";
     public TMPro.TMP_Text displayText;
     private HashSet<KeyCode> keys;
     public int typingSpeed = 2;

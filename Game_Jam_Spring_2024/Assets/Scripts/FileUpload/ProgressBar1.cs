@@ -43,7 +43,7 @@ public class ProgressBar1 : MonoBehaviour
         for (int i = 0; i < 5; ++i)
         {
             progressBar.fillAmount += 0.10f;
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
         }
         panel.SetActive(true);
         if (GameObject.Find("GameManager") != null)

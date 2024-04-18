@@ -9,11 +9,13 @@ public class ProgressBar2 : MonoBehaviour
     private GameManagerScript gameManager;
     private int taskId = 8;
     public GameObject eventSystem;
+    public GameObject panel;
 
     // Start is called before the first frame update
     void Start()
     {
         progressBar = GetComponent<Image>();
+        panel.SetActive(false);
         if (GameObject.Find("GameManager") != null)
         {
             gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
@@ -40,8 +42,9 @@ public class ProgressBar2 : MonoBehaviour
         for (int i = 0; i < 10; ++i)
         {
             progressBar.fillAmount += 0.10f;
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
         }
+        panel.SetActive(true);
         if (GameObject.Find("GameManager") != null)
         {
             Invoke("End", 2);

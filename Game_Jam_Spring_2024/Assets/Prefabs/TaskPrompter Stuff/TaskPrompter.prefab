@@ -73,7 +73,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -123,7 +123,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: dc07eb431dcb92c4183f1469eab3aba6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cf5e75f1b11897e4a915a3a775d93dfd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -148,8 +148,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   taskId: -1
-  interval: 45
+  interval: 60
   taskCollScript: {fileID: 0}
+  normalSprite: {fileID: 21300000, guid: cf5e75f1b11897e4a915a3a775d93dfd, type: 3}
+  highlightedSprite: {fileID: 21300000, guid: 5cfa2ad7973cbc74083cca2891b3aa2f, type: 3}
 --- !u!82 &-4080007260236747779
 AudioSource:
   m_ObjectHideFlags: 0

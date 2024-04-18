@@ -14467,7 +14467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01c166b999989d468e0b28588a63df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayLength: 90
+  dayLength: 120
   miniSceneActive: 0
   progressBar: {fileID: 2014749407}
   timerText: {fileID: 464336160}

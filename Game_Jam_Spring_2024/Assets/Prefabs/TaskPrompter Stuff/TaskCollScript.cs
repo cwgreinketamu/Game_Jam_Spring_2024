@@ -25,7 +25,7 @@ public class TaskCollScript : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             inRange = true;
-            Debug.Log("in range");
+            //Debug.Log("in range");
         }
     }
 
@@ -34,7 +34,7 @@ public class TaskCollScript : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             inRange = false;
-            Debug.Log("out range");
+            //Debug.Log("out range");
         }
     }
 
