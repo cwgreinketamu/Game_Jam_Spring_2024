@@ -24,11 +24,13 @@ public class GameManagerScript : MonoBehaviour
 
     public bool miniSceneActive;
 
-    public ProgressBar progressBar;
+    public ProgressCircle progressCircle;
 
     public TMPro.TMP_Text timerText;
 
     public GameObject clipboard;
+
+    public GameObject postit;
 
     // Start is called before the first frame update
     void Start()
@@ -37,8 +39,8 @@ public class GameManagerScript : MonoBehaviour
         miniSceneActive = false;
         prompters = GameObject.FindGameObjectsWithTag("Prompter");
         ActivateTask(-4);
-        progressBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
-        progressBar.SetBar(totalProgress); 
+        progressCircle = GameObject.Find("ProgressCircle").GetComponent<ProgressCircle>();
+        progressCircle.SetBar(totalProgress); 
         timerText.text = string.Format("");
     }
 
@@ -69,6 +71,7 @@ public class GameManagerScript : MonoBehaviour
             }
         }
         clipboard.GetComponent<ClipboardScript>().AddText(taskId);
+        postit.GetComponent<PostItScript>().ShowPostit(taskId);
         unusedTasks.Remove(taskId);
         activatedTasks.Add(taskId);
 
@@ -127,6 +130,7 @@ public class GameManagerScript : MonoBehaviour
                 inProgressTasks.RemoveAt(i);
                 Debug.Log("Calling removeText cuz finished");
                 clipboard.GetComponent<ClipboardScript>().RemoveText(taskId);
+                postit.GetComponent<PostItScript>().RemoveText(taskId);
                 Debug.Log("Calling removeText successful");
                 if (taskId > 0)
                 {
@@ -189,7 +193,7 @@ public class GameManagerScript : MonoBehaviour
                     }
                 }
                 //task succeeded, add to progress bar here
-                progressBar.IncreaseBar(taskId); //the argument passed in is the percentage of the progress bar to increase by
+                progressCircle.IncreaseBar(taskId); //the argument passed in is the percentage of the progress bar to increase by
             }
         }
         if (miniSceneActive)
@@ -207,9 +211,10 @@ public class GameManagerScript : MonoBehaviour
                 finishedTasks.Add(taskId);
                 activatedTasks.RemoveAt(i);
                 clipboard.GetComponent<ClipboardScript>().RemoveText(taskId);
+                postit.GetComponent<PostItScript>().RemoveText(taskId);
                 Debug.Log("Task " + taskId + " failed");
                 //task failed, subtract from progress bar here
-                progressBar.DecreaseBar(taskId); //The argument passed in is the percentage of the progress bar to reduce
+                progressCircle.DecreaseBar(taskId); //The argument passed in is the percentage of the progress bar to reduce
                 if (unusedTasks.Count > 0)
                 {
                     ActivateTask(unusedTasks[Random.Range(0, unusedTasks.Count)]);

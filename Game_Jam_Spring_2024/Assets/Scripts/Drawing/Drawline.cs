@@ -9,9 +9,17 @@ public class Drawline : MonoBehaviour
 
     Vector2 lastPos;
 
+    AudioSource drawSound;
+
+    private void Start()
+    {
+        drawSound = GetComponents<AudioSource>()[0];
+        drawSound.time = 0.5f;
+    }
     private void Update()
     {
         Draw();
+
     }
 
     void Draw()
@@ -52,5 +60,11 @@ public class Drawline : MonoBehaviour
         currentLineRenderer.positionCount++;
         int positionIndex = currentLineRenderer.positionCount - 1;
         currentLineRenderer.SetPosition(positionIndex, pointPos);
+
+        if(!drawSound.isPlaying)
+        {
+            drawSound.time = 1.0f;
+            drawSound.Play();
+        }
     }
 }

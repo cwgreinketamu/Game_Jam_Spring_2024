@@ -11,6 +11,8 @@ public class ProgressBar2 : MonoBehaviour
     public GameObject eventSystem;
     public GameObject panel;
 
+    AudioSource progressBarSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,8 @@ public class ProgressBar2 : MonoBehaviour
         {
             Instantiate(eventSystem);
         }
+
+        progressBarSound = GetComponents<AudioSource>()[0];
     }
 
     // Update is called once per frame
@@ -39,10 +43,11 @@ public class ProgressBar2 : MonoBehaviour
 
     IEnumerator FillBar()
     {
+        progressBarSound.Play();
         for (int i = 0; i < 10; ++i)
         {
             progressBar.fillAmount += 0.10f;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
         }
         panel.SetActive(true);
         if (GameObject.Find("GameManager") != null)
