@@ -7,7 +7,7 @@ public class TaskCollScript : MonoBehaviour
     private BoxCollider2D coll;
     public bool inRange;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         coll = GetComponent<BoxCollider2D>();
         coll.enabled = false;

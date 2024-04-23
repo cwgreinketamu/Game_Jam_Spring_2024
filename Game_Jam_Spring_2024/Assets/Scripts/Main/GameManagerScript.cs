@@ -32,6 +32,8 @@ public class GameManagerScript : MonoBehaviour
 
     public GameObject postit;
 
+    private AudioSource music;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +44,7 @@ public class GameManagerScript : MonoBehaviour
         progressCircle = GameObject.Find("ProgressCircle").GetComponent<ProgressCircle>();
         progressCircle.SetBar(totalProgress); 
         timerText.text = string.Format("");
+        music = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -162,6 +165,7 @@ public class GameManagerScript : MonoBehaviour
                         counting = true;
                         ActivateTask(unusedTasks[Random.Range(0, unusedTasks.Count)]);
                         ActivateTask(unusedTasks[Random.Range(0, unusedTasks.Count)]);
+                        music.Play();
                     }
                     if (unusedTasks.Count > 0)
                     {
