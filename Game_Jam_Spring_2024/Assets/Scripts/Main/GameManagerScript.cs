@@ -283,4 +283,9 @@ public class GameManagerScript : MonoBehaviour
     {
         totalProgress = value;
     }
+
+    public void GameComplete()
+    {
+        SceneManager.LoadScene("EndOfGame", LoadSceneMode.Single);
+    }
 }

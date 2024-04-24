@@ -53,6 +53,10 @@ public class ProgressBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (progressBar.fillAmount >= 1)
+        {
+            gameManager.GameComplete();
+        }
         
     }
 

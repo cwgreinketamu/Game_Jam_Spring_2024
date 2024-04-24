@@ -9,16 +9,20 @@ public class Teleporter : MonoBehaviour
     private CapsuleCollider2D destinationCollider; // Reference to the destination teleporter's collider
     private bool isTeleporting = false; // Flag to track whether teleportation is in progress
 
+    AudioSource teleportationSound;
+
     private void Start()
     {
         // Get the destination teleporter's collider
         destinationCollider = destination.GetComponent<CapsuleCollider2D>();
+        teleportationSound = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && !isTeleporting)
         {
+            teleportationSound.Play();
             StartCoroutine(TeleportPlayer(collision.transform));
         }
     }
@@ -27,6 +31,8 @@ public class Teleporter : MonoBehaviour
     {
         // Set the teleportation flag to true to prevent re-entry
         isTeleporting = true;
+
+       
 
         // Disable the collider of the destination teleporter to prevent immediate re-entry
         destinationCollider.enabled = false;
@@ -44,5 +50,7 @@ public class Teleporter : MonoBehaviour
 
         // Reset the teleportation flag
         isTeleporting = false;
+
+    
     }
 }

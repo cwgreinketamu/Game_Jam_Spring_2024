@@ -9,17 +9,21 @@ public class ButtonDoorInteraction : MonoBehaviour
     public bool isDoorOpen = false; // Flag to track whether the door is open or closed
     private bool done = false;
 
+    AudioSource buttonSound;
+    
     void Start()
     {
         // Get the SpriteRenderer and BoxCollider2D components of the door
         doorSpriteRenderer = door.GetComponent<SpriteRenderer>();
         doorCollider = door.GetComponent<BoxCollider2D>();
+        buttonSound = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && !done)
         {
+            buttonSound.Play();
             // Toggle door state
             ToggleDoor();
             done = true;

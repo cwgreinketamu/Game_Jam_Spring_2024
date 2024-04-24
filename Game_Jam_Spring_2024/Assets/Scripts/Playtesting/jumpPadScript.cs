@@ -13,7 +13,7 @@ public class jumpPadScript : MonoBehaviour
     void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
-        audioSource = GetComponent<AudioSource>(); 
+       audioSource = GetComponent<AudioSource>(); 
     }
 
     // Update is called once per frame

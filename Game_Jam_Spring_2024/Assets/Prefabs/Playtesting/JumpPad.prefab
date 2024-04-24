@@ -145,8 +145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostStrength: 10
-  audioSource: {fileID: 0}
-  sound: {fileID: 0}
+  audioSource: {fileID: 193287961242072510}
+  sound: {fileID: 8300000, guid: 9bdbf7a4025607f46a74a3f0fcec7f57, type: 3}
 --- !u!82 &193287961242072510
 AudioSource:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8692812971541088994, guid: 423ed2124503e4676afd068699099078, type: 2}
-  m_audioClip: {fileID: 8300000, guid: a254a63103b0a4956adf1204362d757c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9bdbf7a4025607f46a74a3f0fcec7f57, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

@@ -27,6 +27,7 @@ public class GravityFlipperScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && Time.time - lastFlipTime > delay)
         {
             GravityFlip();
+            audioSource.volume = 0.2f;
             audioSource.PlayOneShot(sound);
             lastFlipTime = Time.time;
         }
