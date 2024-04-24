@@ -2154,7 +2154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -735.1001, y: -380.62}
+  m_AnchoredPosition: {x: -735.10004, y: -380.62}
   m_SizeDelta: {x: -1470.19, y: -761.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &652387475
@@ -15064,7 +15064,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 880424389}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b4c6d6e87e0039448b01de128c5df2e2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
