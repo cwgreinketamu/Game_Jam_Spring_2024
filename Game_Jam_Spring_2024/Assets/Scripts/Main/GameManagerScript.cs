@@ -24,13 +24,11 @@ public class GameManagerScript : MonoBehaviour
 
     public bool miniSceneActive;
 
-    public ProgressCircle progressCircle;
+    public ProgressBar progressBar;
 
     public TMPro.TMP_Text timerText;
 
     public GameObject clipboard;
-
-    public GameObject postit;
 
     private AudioSource music;
 
@@ -41,8 +39,8 @@ public class GameManagerScript : MonoBehaviour
         miniSceneActive = false;
         prompters = GameObject.FindGameObjectsWithTag("Prompter");
         ActivateTask(-4);
-        progressCircle = GameObject.Find("ProgressCircle").GetComponent<ProgressCircle>();
-        progressCircle.SetBar(totalProgress); 
+        progressBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
+        progressBar.SetBar(totalProgress); 
         timerText.text = string.Format("");
         music = GetComponent<AudioSource>();
     }
@@ -74,7 +72,6 @@ public class GameManagerScript : MonoBehaviour
             }
         }
         clipboard.GetComponent<ClipboardScript>().AddText(taskId);
-        postit.GetComponent<PostItScript>().ShowPostit(taskId);
         unusedTasks.Remove(taskId);
         activatedTasks.Add(taskId);
 
@@ -93,6 +90,7 @@ public class GameManagerScript : MonoBehaviour
                         inProgressTasks.Add(taskId);
                         activatedTasks.RemoveAt(i);
                         SceneManager.LoadScene(taskId, LoadSceneMode.Additive);
+                        music.volume = 0.25f;
                         miniSceneActive = true;
                         Debug.Log("Scene " + taskId + " loaded");
                         break;
@@ -133,7 +131,6 @@ public class GameManagerScript : MonoBehaviour
                 inProgressTasks.RemoveAt(i);
                 Debug.Log("Calling removeText cuz finished");
                 clipboard.GetComponent<ClipboardScript>().RemoveText(taskId);
-                postit.GetComponent<PostItScript>().RemoveText(taskId);
                 Debug.Log("Calling removeText successful");
                 if (taskId > 0)
                 {
@@ -141,6 +138,7 @@ public class GameManagerScript : MonoBehaviour
                 }
                 Debug.Log("Scene " + taskId + " unloaded");
                 miniSceneActive = false;
+                music.volume = 0.5f;
                 //if task is a part 1 of 2, start part 2
                 if(taskId == 3) //coffee
                 {
@@ -197,7 +195,7 @@ public class GameManagerScript : MonoBehaviour
                     }
                 }
                 //task succeeded, add to progress bar here
-                progressCircle.IncreaseBar(taskId); //the argument passed in is the percentage of the progress bar to increase by
+                progressBar.IncreaseBar(taskId); //the argument passed in is the percentage of the progress bar to increase by
             }
         }
         if (miniSceneActive)
@@ -215,10 +213,9 @@ public class GameManagerScript : MonoBehaviour
                 finishedTasks.Add(taskId);
                 activatedTasks.RemoveAt(i);
                 clipboard.GetComponent<ClipboardScript>().RemoveText(taskId);
-                postit.GetComponent<PostItScript>().RemoveText(taskId);
                 Debug.Log("Task " + taskId + " failed");
                 //task failed, subtract from progress bar here
-                progressCircle.DecreaseBar(taskId); //The argument passed in is the percentage of the progress bar to reduce
+                progressBar.DecreaseBar(taskId); //The argument passed in is the percentage of the progress bar to reduce
                 if (unusedTasks.Count > 0)
                 {
                     ActivateTask(unusedTasks[Random.Range(0, unusedTasks.Count)]);

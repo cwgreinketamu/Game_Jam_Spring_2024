@@ -15,12 +15,12 @@ public class PostItScript : MonoBehaviour
 
     private Dictionary<int, string> descriptions = new Dictionary<int, string>();
     private List<TMPro.TMP_Text> taskList = new List<TMPro.TMP_Text>();
-    private List<Image> postits = new List<Image>(); 
+    private List<GameObject> postits = new List<GameObject>(); 
 
     private int id;
 
-    public Image postitPrefab; 
-
+    public GameObject postitPrefab;
+    public Canvas canvas;
 
     // Start is called before the first frame update
     void Awake()
@@ -42,7 +42,7 @@ public class PostItScript : MonoBehaviour
 
         foreach (var taskId in descriptions.Keys)
         {
-            CreatePostit(taskId);
+            //CreatePostit(taskId);
         }
     }
 
@@ -52,13 +52,13 @@ public class PostItScript : MonoBehaviour
         
     }
 
-    private void CreatePostit(int taskId)
+    public void CreatePostit(int taskId)
     {
-        Image newPostit = Instantiate(postitPrefab, transform);
-        newPostit.transform.localPosition = new Vector3(0, 0, 0);
-        newPostit.enabled = false;
+        GameObject newPostit = Instantiate(postitPrefab, canvas.transform);
+        newPostit.transform.localPosition = new Vector3(-650 + 200*postits.Count, 425, 0);
+        newPostit.GetComponentInChildren<TMPro.TMP_Text>().text = descriptions[taskId];
         postits.Add(newPostit);
-        AddText(taskId, newPostit);
+        //AddText(taskId, newPostit);
     }
 
     public void AddText(int taskId, Image postit)
@@ -66,6 +66,7 @@ public class PostItScript : MonoBehaviour
         TMPro.TMP_Text tempText = Instantiate(taskText, postit.transform);
         tempText.rectTransform.localPosition = Vector3.zero; // Position the text at the center of the post-it
         tempText.text = descriptions[taskId];
+        tempText.enabled = false;
         Debug.Log("Adding task " + tempText.text);
         taskList.Add(tempText);
     }
@@ -77,8 +78,8 @@ public class PostItScript : MonoBehaviour
         {
             if (taskList[i].text == descriptions[taskId])
             {
-                Destroy(taskList[i]);
-                taskList.RemoveAt(i);
+                Destroy(postits[i]);
+                //taskList.RemoveAt(i);
                 break;
             }
         }
@@ -113,7 +114,8 @@ public class PostItScript : MonoBehaviour
         if (id >= 0 && id < postits.Count)
         {
             Debug.Log(postits[id]);
-            postits[id].enabled = true;
+            //postits[id].enabled = true;
+            //taskList[id].enabled = true;
         }
         else
         {

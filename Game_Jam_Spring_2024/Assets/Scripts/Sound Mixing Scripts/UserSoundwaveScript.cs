@@ -49,7 +49,7 @@ public class usersoundwaveScript : MonoBehaviour
         Draw();
         float frequencyDifference = Mathf.Abs(goalScript.frequency - frequency);
         float normalizedDifference = Mathf.Clamp01(frequencyDifference / (0.20f - 0.01f));
-        staticSound.volume = normalizedDifference * 5;
+        staticSound.volume = normalizedDifference;
 
         if (goalScript.frequency - interval1 < frequency && goalScript.frequency + interval1 > frequency)
         {
