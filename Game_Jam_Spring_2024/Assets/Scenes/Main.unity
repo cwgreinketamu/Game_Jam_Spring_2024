@@ -15336,7 +15336,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 880424389}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b4c6d6e87e0039448b01de128c5df2e2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
