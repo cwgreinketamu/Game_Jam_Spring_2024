@@ -152,6 +152,7 @@ MonoBehaviour:
   taskCollScript: {fileID: 0}
   normalSprite: {fileID: 21300000, guid: cf5e75f1b11897e4a915a3a775d93dfd, type: 3}
   highlightedSprite: {fileID: 21300000, guid: 5cfa2ad7973cbc74083cca2891b3aa2f, type: 3}
+  anim: {fileID: 0}
 --- !u!82 &-4080007260236747779
 AudioSource:
   m_ObjectHideFlags: 0
@@ -401,7 +402,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &6500292531931909373
 MonoBehaviour:

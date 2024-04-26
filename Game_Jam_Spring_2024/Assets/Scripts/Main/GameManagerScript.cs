@@ -59,6 +59,26 @@ public class GameManagerScript : MonoBehaviour
                 timer = dayLength;
             }
         }
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (!miniSceneActive)
+            {
+                //Debug.Log("hit something");
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                RaycastHit2D[] hits = Physics2D.RaycastAll(mousePosition, -1 * transform.forward);
+                foreach (RaycastHit2D hit in hits)
+                {
+
+                    //Debug.Log(hit.collider.name);
+                    if (hit.collider.CompareTag("Prompter"))
+                    {
+                        //Debug.Log("new code worked");
+                        hit.collider.GetComponent<TaskPrompterScript>().Clicked();
+                    }
+                }
+            }
+        }
     }
 
     public void ActivateTask(int taskId) //task is given to player
@@ -92,13 +112,13 @@ public class GameManagerScript : MonoBehaviour
                         SceneManager.LoadScene(taskId, LoadSceneMode.Additive);
                         music.volume = 0.25f;
                         miniSceneActive = true;
-                        Debug.Log("Scene " + taskId + " loaded");
+                        //Debug.Log("Scene " + taskId + " loaded");
                         break;
                     }
                 }
                 if (!miniSceneActive)
                 {
-                    Debug.Log("Scene not found! TaskId: " + taskId);
+                    //Debug.Log("Scene not found! TaskId: " + taskId);
                 }
             }
             else
@@ -129,14 +149,14 @@ public class GameManagerScript : MonoBehaviour
                 }
                 finishedTasks.Add(taskId);
                 inProgressTasks.RemoveAt(i);
-                Debug.Log("Calling removeText cuz finished");
+                //Debug.Log("Calling removeText cuz finished");
                 clipboard.GetComponent<ClipboardScript>().RemoveText(taskId);
-                Debug.Log("Calling removeText successful");
+                //Debug.Log("Calling removeText successful");
                 if (taskId > 0)
                 {
                     SceneManager.UnloadSceneAsync(taskId);
                 }
-                Debug.Log("Scene " + taskId + " unloaded");
+                //Debug.Log("Scene " + taskId + " unloaded");
                 miniSceneActive = false;
                 music.volume = 0.5f;
                 //if task is a part 1 of 2, start part 2
@@ -171,7 +191,7 @@ public class GameManagerScript : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("All tasks completed");
+                        //Debug.Log("All tasks completed");
                         bool flag = true;
                         while (flag)
                         {
@@ -200,7 +220,7 @@ public class GameManagerScript : MonoBehaviour
         }
         if (miniSceneActive)
         {
-            Debug.Log("Scene not found! TaskId: " + taskId);
+            //Debug.Log("Scene not found! TaskId: " + taskId);
         }
     }
 
@@ -213,7 +233,7 @@ public class GameManagerScript : MonoBehaviour
                 finishedTasks.Add(taskId);
                 activatedTasks.RemoveAt(i);
                 clipboard.GetComponent<ClipboardScript>().RemoveText(taskId);
-                Debug.Log("Task " + taskId + " failed");
+                //Debug.Log("Task " + taskId + " failed");
                 //task failed, subtract from progress bar here
                 progressBar.DecreaseBar(taskId); //The argument passed in is the percentage of the progress bar to reduce
                 if (unusedTasks.Count > 0)
@@ -222,7 +242,7 @@ public class GameManagerScript : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("All tasks completed");
+                    //Debug.Log("All tasks completed");
                     bool flag = true;
                     while (flag)
                     {

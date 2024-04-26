@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Unity.IO.LowLevel.Unsafe.AsyncReadManagerMetrics;
 
 public class ProgressBar2 : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class ProgressBar2 : MonoBehaviour
     public GameObject panel;
 
     AudioSource progressBarSound;
+
+    private bool flag;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +31,7 @@ public class ProgressBar2 : MonoBehaviour
         }
 
         progressBarSound = GetComponents<AudioSource>()[0];
+        flag = false;
     }
 
     // Update is called once per frame
@@ -38,7 +42,11 @@ public class ProgressBar2 : MonoBehaviour
 
     public void ButtonPressed()
     {
-        StartCoroutine("FillBar");
+        if (!flag)
+        {
+            StartCoroutine("FillBar");
+            flag = true;
+        }
     }
 
     IEnumerator FillBar()

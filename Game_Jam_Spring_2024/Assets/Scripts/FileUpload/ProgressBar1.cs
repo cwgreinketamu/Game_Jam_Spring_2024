@@ -15,6 +15,8 @@ public class ProgressBar1 : MonoBehaviour
     AudioSource progressBarSound;
     AudioSource errorSound;
 
+    private bool flag;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,7 @@ public class ProgressBar1 : MonoBehaviour
         }
         progressBarSound = GetComponents<AudioSource>()[0];
         errorSound = GetComponents<AudioSource>()[1];
+        flag = false;
     }
 
     // Update is called once per frame
@@ -40,7 +43,11 @@ public class ProgressBar1 : MonoBehaviour
 
     public void ButtonPressed()
     {
-        StartCoroutine("FillBar");
+        if (!flag)
+        {
+            StartCoroutine("FillBar");
+            flag = true;
+        }
     }
 
     IEnumerator FillBar()

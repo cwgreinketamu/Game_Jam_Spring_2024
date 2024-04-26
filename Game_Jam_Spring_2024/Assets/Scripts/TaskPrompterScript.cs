@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class TaskPrompterScript : MonoBehaviour
@@ -17,6 +18,8 @@ public class TaskPrompterScript : MonoBehaviour
     AudioSource taskComplete;
     public Sprite normalSprite;
     public Sprite highlightedSprite;
+    public Animator anim;
+    private bool clicked;
 
     // Start is called before the first frame update
     void Awake()
@@ -28,9 +31,14 @@ public class TaskPrompterScript : MonoBehaviour
         arrowScript = GetComponentInChildren<ArrowScript>();
         progressBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
         sprite = GetComponent<SpriteRenderer>();
-        sprite.sprite = normalSprite;
         taskComplete = GetComponent<AudioSource>();
         taskCollScript = GetComponentInChildren<TaskCollScript>();
+        if (taskId == -1)
+        {
+            anim = GetComponent<Animator>();
+            anim.SetBool("Highlight", false);
+        }
+        clicked = false;
     }
 
     // Update is called once per frame
@@ -45,7 +53,14 @@ public class TaskPrompterScript : MonoBehaviour
                 taskCollScript.SetColl(false);
                 gameManager.DeactivateTask(taskId);
                 arrowScript.Disable();
-                sprite.sprite = normalSprite;
+                if (taskId == -1)
+                {
+                    anim.SetBool("Highlight", false);
+                }
+                else
+                {
+                    sprite.sprite = normalSprite;
+                }
                 timer = 0f;
             }
             else if (timer > 2 * interval / 3)
@@ -65,14 +80,35 @@ public class TaskPrompterScript : MonoBehaviour
 
     private void OnMouseDown()
     {
+        //Debug.Log("task collider worked");
+        Clicked();
+    }
+
+    public void Clicked()
+    {
+        if (!clicked)
+        {
+            clicked = true;
+        }
+        else
+        {
+            return;
+        }
         if (taskCollScript.inRange)
         {
             gameManager.StartTask(taskId);
             arrowScript.Disable();
             timerEnabled = false;
             coll.enabled = false;
+            if (taskId == -1)
+            {
+                anim.SetBool("Highlight", false);
+            }
+            else
+            {
+                sprite.sprite = normalSprite;
+            }
             taskCollScript.SetColl(false);
-            sprite.sprite = normalSprite;
         }
         else
         {
@@ -94,7 +130,15 @@ public class TaskPrompterScript : MonoBehaviour
         timerEnabled = true;
         arrowScript.Enable();
         arrowScript.SetColor("Green");
-        sprite.sprite = highlightedSprite;
+        if (taskId == -1)
+        {
+            anim.SetBool("Highlight", true);
+        }
+        else
+        {
+            sprite.sprite = highlightedSprite;
+        }
+        clicked = false;
     }
 
     public void ResetTimer()
